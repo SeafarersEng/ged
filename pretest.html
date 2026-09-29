@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="my" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f8fafc">
+<title>GED Pretest — ဘာသာရပ် ရွေးချယ်ပါ</title>
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('ged:theme');
+    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Myanmar:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#64748b;
+  --border:rgba(15,23,42,.09);
+  --primary:#6366f1; --primary-d:#4f46e5;
+  --green:#16a34a; --red:#dc2626; --amber:#f59e0b;
+  --blue:#3b82f6; --violet:#8b5cf6; --cyan:#06b6d4; --pink:#ec4899;
+  --radius:20px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --shadow:0 1px 3px rgba(15,23,42,.05), 0 8px 24px -12px rgba(15,23,42,.15);
+  --shadow-lg:0 4px 8px rgba(15,23,42,.06), 0 20px 40px -16px rgba(15,23,42,.22);
+  --nav-bg:rgba(248,250,252,.88);
+  --hover-soft:rgba(15,23,42,.03);
+}
+html[data-theme="dark"]{
+  --bg:#0b1220; --card:#141d30; --text:#e9eefb; --muted:#93a4c2;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 2px 4px rgba(0,0,0,.3), 0 16px 34px -18px rgba(0,0,0,.75);
+  --shadow-lg:0 8px 20px rgba(0,0,0,.45), 0 28px 50px -20px rgba(0,0,0,.85);
+  --nav-bg:rgba(11,18,32,.88);
+  --hover-soft:rgba(255,255,255,.05);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; min-height:100svh;
+  font-family:'Inter','Noto Sans Myanmar','Padauk',system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6;
+  -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
+  overflow-x:hidden;
+  transition:background .35s, color .35s;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(720px 480px at 8% -8%, rgba(99,102,241,.12), transparent 65%),
+    radial-gradient(720px 480px at 100% 4%, rgba(139,92,246,.10), transparent 65%),
+    radial-gradient(620px 420px at 50% 105%, rgba(16,185,129,.08), transparent 65%);
+}
+html[data-theme="dark"] body::before{ opacity:.55 }
+
+/* ============ NAVBAR ============ */
+.nav{
+  position:sticky; top:0; z-index:40;
+  background:var(--nav-bg);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:calc(10px + var(--safe-top)) 0 10px;
+  transition:background .35s, border-color .35s;
+}
+.nav-inner{
+  max-width:1140px; margin:0 auto; padding:0 18px;
+  display:flex; align-items:center; gap:12px;
+}
+.back-btn{
+  display:inline-flex; align-items:center; gap:6px; flex:none;
+  padding:9px 13px; border-radius:11px;
+  border:1px solid var(--border); background:var(--card);
+  color:var(--text); text-decoration:none;
+  font-size:12.5px; font-weight:700;
+  transition:transform .18s, background .2s;
+}
+.back-btn:hover{ background:var(--hover-soft) }
+.back-btn:active{ transform:scale(.95) }
+.nav-title{
+  flex:1; min-width:0;
+  font-size:clamp(13px,3.6vw,16px); font-weight:800;
+  letter-spacing:-.01em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.nav-title small{
+  display:block; font-size:11px; font-weight:600;
+  color:var(--muted); margin-top:1px;
+}
+.icon-btn{
+  width:38px; height:38px; flex:none;
+  display:grid; place-items:center;
+  border-radius:11px; border:1px solid var(--border);
+  background:var(--card); color:var(--text);
+  font-size:16px; cursor:pointer; padding:0;
+  transition:transform .18s, background .18s;
+  font-family:inherit;
+}
+.icon-btn:hover{ background:var(--hover-soft) }
+.icon-btn:active{ transform:scale(.9) }
+
+/* ============ HERO ============ */
+.hero{
+  max-width:1140px; margin:0 auto;
+  padding:28px 18px 22px; text-align:center;
+}
+.hero .icon{
+  width:72px; height:72px; border-radius:22px; margin:0 auto 16px;
+  display:grid; place-items:center; font-size:34px; color:#fff;
+  background:linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow:0 16px 34px -12px rgba(34,197,94,.7);
+}
+.hero h1{
+  margin:0 0 8px;
+  font-size:clamp(22px, 5.5vw, 32px);
+  font-weight:900; letter-spacing:-.03em; line-height:1.15;
+}
+.hero p{
+  margin:0 auto; max-width:560px;
+  font-size:clamp(13px,3.4vw,15px);
+  color:var(--muted); line-height:1.75;
+}
+
+/* ============ INFO BANNER ============ */
+.info{
+  max-width:1140px; margin:0 auto 22px;
+  padding:0 18px;
+}
+.info-box{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:16px 18px;
+  box-shadow:var(--shadow);
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:12.5px; color:var(--muted); line-height:1.8;
+}
+.info-box .ico{
+  flex:none; width:38px; height:38px; border-radius:11px;
+  display:grid; place-items:center; font-size:18px;
+  background:rgba(245,158,11,.15);
+}
+html[data-theme="dark"] .info-box .ico{ background:rgba(245,158,11,.25) }
+.info-box b{ color:var(--text); font-weight:800 }
+
+/* ============ GRID ============ */
+.wrap{
+  max-width:1140px; margin:0 auto;
+  padding:0 18px calc(50px + var(--safe-bottom));
+}
+.grid{
+  display:grid; grid-template-columns:1fr; gap:14px;
+}
+@media(min-width:600px){ .grid{ grid-template-columns:repeat(2,1fr); gap:16px } }
+
+/* ============ SUBJECT CARD ============ */
+.subj{
+  position:relative; display:flex; flex-direction:column;
+  padding:22px; border-radius:var(--radius);
+  background:var(--card); border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  text-decoration:none; color:inherit;
+  overflow:hidden;
+  transition:transform .28s cubic-bezier(.22,.8,.28,1),
+             box-shadow .28s, border-color .28s, background .35s;
+  animation:cardIn .5s cubic-bezier(.22,.8,.28,1) both;
+  cursor:pointer;
+}
+@keyframes cardIn{
+  from{ opacity:0; transform:translateY(16px) scale(.98) }
+  to{ opacity:1; transform:none }
+}
+@media(hover:hover){
+  .subj:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow-lg);
+    border-color:var(--ac);
+  }
+  .subj:hover .s-icon{ transform:scale(1.08) rotate(-5deg) }
+  .subj:hover .s-arrow{
+    transform:translateX(4px);
+    background:var(--ac);
+    color:#fff;
+    border-color:transparent;
+  }
+}
+.subj:active{ transform:scale(.982) }
+
+.s-top{ display:flex; align-items:center; justify-content:space-between; gap:10px }
+.s-icon{
+  width:58px; height:58px; flex:none;
+  display:grid; place-items:center;
+  font-size:28px; border-radius:16px;
+  transition:transform .3s cubic-bezier(.22,.8,.28,1);
+}
+.s-arrow{
+  width:32px; height:32px; flex:none;
+  display:grid; place-items:center;
+  font-size:14px; border-radius:50%;
+  border:1px solid var(--border); color:var(--muted);
+  transition:transform .28s, background .28s, color .28s, border-color .28s;
+}
+.subj h2{
+  margin:16px 0 0; font-size:18px; font-weight:800;
+  letter-spacing:-.01em; line-height:1.3;
+}
+.subj h2 small{
+  display:block; font-size:12px; font-weight:600;
+  color:var(--muted); margin-top:3px; letter-spacing:0;
+}
+.subj .s-desc{
+  margin:8px 0 0; font-size:13px; color:var(--muted);
+  line-height:1.7; flex:1;
+}
+.s-meta{
+  display:flex; gap:14px; flex-wrap:wrap;
+  margin-top:16px; padding-top:14px;
+  border-top:1px solid var(--border);
+}
+.s-meta-item{
+  display:flex; align-items:center; gap:6px;
+  font-size:12px; color:var(--muted); font-weight:600;
+}
+.s-meta-item b{ color:var(--text); font-weight:800 }
+.s-meta-item .dot{
+  width:6px; height:6px; border-radius:50%;
+  background:var(--ac);
+  box-shadow:0 0 0 3px rgba(99,102,241,.2);
+}
+
+/* Best score badge */
+.scores{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  margin-top:12px;
+}
+.attempt-badge{
+  display:inline-flex; align-items:center; gap:5px;
+  padding:5px 11px; border-radius:999px;
+  font-size:11px; font-weight:800; letter-spacing:.02em;
+}
+.attempt-badge.good{ background:rgba(22,163,74,.14); color:#15803d }
+html[data-theme="dark"] .attempt-badge.good{ background:rgba(22,163,74,.25); color:#4ade80 }
+.attempt-badge.mid{ background:rgba(245,158,11,.16); color:#b45309 }
+html[data-theme="dark"] .attempt-badge.mid{ background:rgba(245,158,11,.25); color:#fbbf24 }
+.attempt-badge.bad{ background:rgba(220,38,38,.12); color:#b91c1c }
+html[data-theme="dark"] .attempt-badge.bad{ background:rgba(220,38,38,.25); color:#fca5a5 }
+.scores small{
+  font-size:11px; color:var(--muted); font-weight:600;
+}
+
+/* ============ HOW IT WORKS ============ */
+.how{
+  max-width:1140px; margin:32px auto 0;
+  padding:0 18px;
+}
+.how-head{
+  text-align:center; margin-bottom:22px;
+}
+.how-head .tag{
+  display:inline-block; font-size:11.5px; font-weight:800;
+  color:var(--primary-d); letter-spacing:.08em;
+  text-transform:uppercase; margin-bottom:6px;
+}
+.how-head h2{
+  margin:0 0 6px; font-size:clamp(18px,4.4vw,22px);
+  font-weight:800; letter-spacing:-.02em;
+}
+.how-head p{
+  margin:0 auto; max-width:520px;
+  font-size:13px; color:var(--muted); line-height:1.7;
+}
+.steps{
+  display:grid; grid-template-columns:1fr; gap:12px;
+}
+@media(min-width:640px){ .steps{ grid-template-columns:repeat(3,1fr) } }
+.step{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:22px 18px;
+  box-shadow:var(--shadow); position:relative;
+  transition:background .35s, border-color .35s;
+}
+.step .n{
+  position:absolute; top:-14px; left:18px;
+  width:32px; height:32px; border-radius:10px;
+  display:grid; place-items:center;
+  font-size:14px; font-weight:900; color:#fff;
+  background:linear-gradient(135deg, var(--primary), var(--violet));
+  box-shadow:0 8px 18px -6px rgba(99,102,241,.6);
+}
+.step h4{ margin:14px 0 6px; font-size:15px; font-weight:800 }
+.step p{ margin:0; font-size:12.5px; color:var(--muted); line-height:1.75 }
+
+/* ============ FOOTER ============ */
+footer{
+  padding:40px 18px calc(50px + var(--safe-bottom));
+  text-align:center; font-size:12px; color:var(--muted);
+  line-height:2;
+}
+footer .brand{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-bottom:6px;
+  font-weight:800; color:var(--text); font-size:13px;
+}
+footer .brand .mark{
+  width:24px; height:24px; border-radius:7px;
+  display:grid; place-items:center;
+  font-size:9px; font-weight:900; color:#fff;
+  background:linear-gradient(135deg, var(--primary), var(--violet));
+}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed; bottom:calc(24px + var(--safe-bottom)); left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#0f172a; color:#fff;
+  padding:13px 20px; border-radius:12px;
+  font-size:13.5px; font-weight:600;
+  box-shadow:0 20px 40px -12px rgba(0,0,0,.5);
+  z-index:200; opacity:0; pointer-events:none;
+  transition:opacity .3s, transform .35s cubic-bezier(.22,.8,.28,1);
+  max-width:90vw; text-align:center;
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0) }
+.toast.ok{ background:linear-gradient(135deg, #16a34a, #15803d) }
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="back-btn" href="main.html">← Back</a>
+    <div class="nav-title">
+      GED Pretest
+      <small>ဖြေလိုသော ဘာသာရပ် ရွေးချယ်ပါ</small>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="icon">✍️</div>
+  <h1>GED Pretest</h1>
+  <p>
+    GED စာမေးပွဲအတွက် အသင့်ဖြစ်မဖြစ် စမ်းသပ်ပါ။ ဘာသာရပ်တစ်ခုချင်းစီအတွက်
+    Official Format (46 questions · 115 minutes) အတိုင်း ဖြေဆိုနိုင်ပါသည်။
+  </p>
+</section>
+
+<!-- ============ INFO ============ -->
+<div class="info">
+  <div class="info-box">
+    <span class="ico">💡</span>
+    <div>
+      <b>အကြံပြုချက်</b><br>
+      Pretest ဖြေပြီးပါက သင့်အားနည်းသော ဘာသာရပ်ကို သိရှိနိုင်ပါသည်။
+      ထိုဘာသာရပ်၏ Lesson များကို ဦးစားပေး လေ့လာပါ။ ရမှတ်ကို browser ထဲ သိမ်းထားပေးမည်ဖြစ်သောကြောင့်
+      နောက်တစ်ခါ ပြန်ကြည့်နိုင်ပါသည်။
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUBJECTS GRID ============ -->
+<div class="wrap">
+  <div class="grid" id="subjectGrid"></div>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how">
+  <div class="how-head">
+    <div class="tag">How It Works</div>
+    <h2>ဘယ်လိုအလုပ်လုပ်လဲ?</h2>
+    <p>ရိုးရှင်း ၃ ဆင့်ဖြင့် သင့်အဆင့်ကို စမ်းသပ်ပါ။</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="n">1</div>
+      <h4>ဘာသာရပ် ရွေးပါ</h4>
+      <p>RLA · Math · Science · Social Studies အနက် ဖြေလိုသည့် ဘာသာရပ်ကို ရွေးပါ။</p>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <h4>Exam ဖြေပါ</h4>
+      <p>Official GED Format — Part 1 (no calculator) + 3-min break + Part 2 (calculator)။</p>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <h4>ရမှတ် ကြည့်ပါ</h4>
+      <p>Estimated GED Score (100–200 scale)၊ correct/wrong count၊ မေးခွန်း အဆင့်ဆင့် ရှင်းလင်းချက်များ။</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="brand">
+    <span class="mark">GED</span>
+    <span>GED Myanmar</span>
+  </div>
+  <div>Learn. Practice. Pass.</div>
+</footer>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     THEME
+  ============================================================ */
+  var THEME_KEY = 'ged:theme';
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeBtn');
+  var themeIcon = document.getElementById('themeIcon');
+  var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function applyTheme(theme){
+    root.setAttribute('data-theme', theme);
+    themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if(themeColorMeta){
+      themeColorMeta.setAttribute('content', theme === 'dark' ? '#0b1220' : '#f8fafc');
+    }
+    try { localStorage.setItem(THEME_KEY, theme); } catch(e){}
+  }
+  applyTheme(root.getAttribute('data-theme') || 'light');
+
+  themeBtn.addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  /* ============================================================
+     SUBJECT CONFIG — ALL READY
+  ============================================================ */
+  var SUBJECTS = [
+    {
+      id: 'rla',
+      href: 'rlaexam.html',
+      icon: '📖',
+      color: '#3b82f6',
+      name: 'RLA',
+      full: 'Reasoning Through Language Arts',
+      desc: 'Reading comprehension, grammar, vocabulary, essay writing မေးခွန်းများ။',
+      questions: 46,
+      minutes: 115
+    },
+    {
+      id: 'math',
+      href: 'mathexam.html',
+      icon: '📐',
+      color: '#8b5cf6',
+      name: 'Mathematical Reasoning',
+      full: 'Quantitative & Algebraic Problem Solving',
+      desc: 'Arithmetic, algebra, geometry, statistics, word problems မေးခွန်းများ။',
+      questions: 46,
+      minutes: 115
+    },
+    {
+      id: 'science',
+      href: 'scienceexam.html',
+      icon: '🔬',
+      color: '#10b981',
+      name: 'Science',
+      full: 'Life, Physical & Earth Science',
+      desc: 'Biology, chemistry, physics, Earth & space science မေးခွန်းများ။',
+      questions: 46,
+      minutes: 115
+    },
+    {
+      id: 'social',
+      href: 'socialexam.html',
+      icon: '🌍',
+      color: '#f59e0b',
+      name: 'Social Studies',
+      full: 'Civics, History, Geography & Economics',
+      desc: 'US history, government, world geography, basic economics မေးခွန်းများ။',
+      questions: 46,
+      minutes: 115
+    }
+  ];
+
+  /* ============================================================
+     LOAD SCORES
+  ============================================================ */
+  var STORE = 'ged:pretest:scores';
+
+  function loadScores(){
+    try {
+      return JSON.parse(localStorage.getItem(STORE)) || {};
+    } catch(e){
+      return {};
+    }
+  }
+
+  function scoreClass(pct){
+    if(pct >= 75) return 'good';
+    if(pct >= 50) return 'mid';
+    return 'bad';
+  }
+
+  /* ============================================================
+     RENDER
+  ============================================================ */
+  var grid = document.getElementById('subjectGrid');
+
+  function render(){
+    var scores = loadScores();
+    grid.innerHTML = '';
+
+    SUBJECTS.forEach(function(s, i){
+      var rec = scores[s.id];
+
+      var el = document.createElement('a');
+      el.href = s.href;
+      el.className = 'subj';
+      el.style.setProperty('--ac', s.color);
+      el.style.animationDelay = (i * 70) + 'ms';
+
+      var iconBg = s.color + '1f';
+
+      // Meta row
+      var metaHtml =
+        '<div class="s-meta">' +
+          '<div class="s-meta-item">' +
+            '<span class="dot"></span>' +
+            '<b>' + s.questions + '</b> questions' +
+          '</div>' +
+          '<div class="s-meta-item">' +
+            '<span class="dot"></span>' +
+            '<b>' + s.minutes + '</b> min' +
+          '</div>' +
+        '</div>';
+
+      // Score section
+      var bottomHtml = '';
+      if(rec && rec.pct != null){
+        var pct = rec.pct;
+        var cls = scoreClass(pct);
+        bottomHtml =
+          '<div class="scores">' +
+            '<span class="attempt-badge ' + cls + '">✔ Best: ' + pct + '%</span>' +
+            '<small>' + rec.score + '/' + rec.total + ' correct</small>' +
+          '</div>';
+      } else {
+        bottomHtml =
+          '<div class="scores">' +
+            '<small>📝 Not attempted yet</small>' +
+          '</div>';
+      }
+
+      el.innerHTML =
+        '<div class="s-top">' +
+          '<span class="s-icon" style="background:' + iconBg + ';">' + s.icon + '</span>' +
+          '<span class="s-arrow">→</span>' +
+        '</div>' +
+        '<h2>' + s.name + '<small>' + s.full + '</small></h2>' +
+        '<p class="s-desc">' + s.desc + '</p>' +
+        metaHtml +
+        bottomHtml;
+
+      grid.appendChild(el);
+    });
+  }
+
+  /* ============================================================
+     REFRESH ON RETURN
+  ============================================================ */
+  window.addEventListener('pageshow', function(e){
+    if(e.persisted) render();
+  });
+
+  /* ============================================================
+     INIT
+  ============================================================ */
+  render();
+
+})();
+</script>
+</body>
+</html>
