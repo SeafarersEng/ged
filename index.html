@@ -69,12 +69,21 @@ html[data-theme="dark"] body::before{opacity:.55;}
   font-size:16px;cursor:pointer;padding:0;font-family:inherit;transition:transform .18s,background .18s;}
 .icon-btn:hover{background:var(--hover-soft);}
 .icon-btn:active{transform:scale(.9);}
-.nav-tg{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:11px;
-  background:linear-gradient(135deg,#229ED9,#0088cc);color:#fff;text-decoration:none;
-  font-size:12.5px;font-weight:700;transition:transform .18s,filter .2s;}
-.nav-tg:hover{filter:brightness(1.08);}
-.nav-tg:active{transform:scale(.95);}
-@media(max-width:520px){.nav-title{display:none;}}
+.nav-tg,.nav-tt{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:11px;
+  color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;
+  transition:transform .18s,filter .2s;}
+.nav-tg{background:linear-gradient(135deg,#229ED9,#0088cc);}
+.nav-tt{background:linear-gradient(135deg,#25F4EE,#FE2C55);}
+.nav-tg:hover,.nav-tt:hover{filter:brightness(1.08);}
+.nav-tg:active,.nav-tt:active{transform:scale(.95);}
+@media(max-width:640px){
+  .nav-title{display:none;}
+  .nav-tg,.nav-tt{padding:7px 10px;font-size:11.5px;}
+}
+@media(max-width:400px){
+  .nav-tg span.lbl,.nav-tt span.lbl{display:none;}
+  .nav-tg,.nav-tt{padding:8px 10px;font-size:14px;}
+}
 
 .wrap{max-width:1140px;margin:0 auto;padding:0 18px calc(60px + var(--safe-bottom));}
 .hero{padding:44px 0 32px;text-align:center;}
@@ -181,6 +190,9 @@ html[data-theme="dark"] .info-card .ic{background:color-mix(in srgb,var(--c,#636
 .btn.tg{background:linear-gradient(135deg,#229ED9,#0088cc);color:#fff;
   box-shadow:0 12px 26px -10px rgba(34,158,217,.8);}
 .btn.tg:hover{filter:brightness(1.08);}
+.btn.tt{background:linear-gradient(135deg,#010101,#FE2C55 70%,#25F4EE);color:#fff;
+  box-shadow:0 12px 26px -10px rgba(254,44,85,.7);}
+.btn.tt:hover{filter:brightness(1.15);}
 .btn.lg{padding:16px 28px;font-size:16px;border-radius:16px;}
 
 .cta-band{background:linear-gradient(135deg,var(--primary),var(--violet));color:#fff;
@@ -195,6 +207,14 @@ html[data-theme="dark"] .info-card .ic{background:color-mix(in srgb,var(--c,#636
 .cta-band .btn{position:relative;background:#fff;color:var(--primary-d);
   box-shadow:0 12px 26px -10px rgba(0,0,0,.35);}
 .cta-band .btn:hover{filter:brightness(.97);}
+.cta-band .contact-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  position:relative;margin-top:14px;}
+.cta-band .chip{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;
+  border-radius:999px;background:rgba(255,255,255,.18);color:#fff;text-decoration:none;
+  font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(6px);transition:transform .18s,background .18s;}
+.cta-band .chip:hover{background:rgba(255,255,255,.28);}
+.cta-band .chip:active{transform:scale(.95);}
 
 .modal-bg{position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.55);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -248,13 +268,19 @@ html[data-theme="dark"] .info-card .ic{background:color-mix(in srgb,var(--c,#636
   animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .submit-btn.loading .spinner{display:inline-block;}
-.alt-actions{margin-top:16px;text-align:center;}
-.tg-contact{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;
-  background:linear-gradient(135deg,#229ED9,#0088cc);color:#fff;text-decoration:none;
-  font-size:13px;font-weight:700;box-shadow:0 8px 20px -8px rgba(34,158,217,.7);
+.alt-actions{margin-top:20px;text-align:center;}
+.alt-title{font-size:12.5px;color:var(--muted);margin:0 0 10px;font-weight:600;}
+.contact-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.tg-contact,.tt-contact{display:inline-flex;align-items:center;gap:8px;
+  padding:11px 16px;border-radius:12px;color:#fff;text-decoration:none;
+  font-size:13px;font-weight:700;flex:1 1 auto;justify-content:center;
   transition:transform .18s,filter .2s;}
-.tg-contact:hover{filter:brightness(1.08);}
-.tg-contact:active{transform:scale(.97);}
+.tg-contact{background:linear-gradient(135deg,#229ED9,#0088cc);
+  box-shadow:0 8px 20px -8px rgba(34,158,217,.7);}
+.tt-contact{background:linear-gradient(135deg,#010101,#FE2C55 70%,#25F4EE);
+  box-shadow:0 8px 20px -8px rgba(254,44,85,.6);}
+.tg-contact:hover,.tt-contact:hover{filter:brightness(1.1);}
+.tg-contact:active,.tt-contact:active{transform:scale(.97);}
 .status-msg{padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;
   line-height:1.65;margin-bottom:14px;display:none;}
 .status-msg.show{display:block;}
@@ -299,7 +325,10 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     <div class="nav-title">Login</div>
     <div class="nav-actions">
       <a class="nav-tg" href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" rel="noopener">
-        ✈️ Telegram
+        ✈️ <span class="lbl">Telegram</span>
+      </a>
+      <a class="nav-tt" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">
+        🎵 <span class="lbl">TikTok</span>
       </a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">
         <span id="themeIcon">🌙</span>
@@ -320,7 +349,10 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     <div class="hero-cta">
       <button class="btn primary lg" id="openLogin">🔓 Login ဝင်ရန်</button>
       <a class="btn tg lg" href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" rel="noopener">
-        ✈️ Account ရယူရန်
+        ✈️ Telegram မှ ဆက်သွယ်ရန်
+      </a>
+      <a class="btn tt lg" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">
+        🎵 TikTok မှ ဆက်သွယ်ရန်
       </a>
     </div>
     <div class="stats-strip">
@@ -383,7 +415,7 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
       <h2>🚀 ဘယ်လိုစတင်မလဲ?</h2>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">1</div><div class="s-ico">✈️</div><h4>Admin ဆက်သွယ်</h4><p>Telegram admin ကို ဆက်သွယ်ပြီး Account တောင်းပါ။</p></div>
+      <div class="step"><div class="n">1</div><div class="s-ico">✈️</div><h4>Admin ဆက်သွယ်</h4><p>Telegram (သို့) TikTok မှ admin ကို ဆက်သွယ်ပြီး Account တောင်းပါ။</p></div>
       <div class="step"><div class="n">2</div><div class="s-ico">🔓</div><h4>Login ဝင်</h4><p>Admin ပေးသော Username + ID ဖြင့် Login ဝင်ပါ။</p></div>
       <div class="step"><div class="n">3</div><div class="s-ico">📚</div><h4>Exercise + Formula</h4><p>Exercise ဖြေပြီး Formula Sheet ဖြင့် ဖော်မြူလာများ ရှာပါ။</p></div>
       <div class="step"><div class="n">4</div><div class="s-ico">✍️</div><h4>Pretest ဖြေ</h4><p>Official Format Pretest ဖြေပြီး သင့်အဆင့် သိပါ။</p></div>
@@ -394,7 +426,7 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     <div class="info-card" style="--c:#f59e0b;">
       <div class="ic">🔑</div>
       <h3>Admin မှ ID ပေးသည်</h3>
-      <p>Signup လုပ်ရန် မလိုပါ။ Telegram admin ကို ဆက်သွယ်ပြီး username နှင့် ID ရယူပါ။</p>
+      <p>Signup လုပ်ရန် မလိုပါ။ Telegram သို့မဟုတ် TikTok မှ admin ကို ဆက်သွယ်ပြီး username နှင့် ID ရယူပါ။</p>
     </div>
     <div class="info-card" style="--c:#6366f1;">
       <div class="ic">📱</div>
@@ -410,8 +442,12 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
 
   <div class="cta-band">
     <h2>🚀 ယနေ့ပဲ စတင်လိုက်ပါ</h2>
-    <p>Admin ကို ဆက်သွယ်ပြီး account ဖွင့်ပါ။</p>
+    <p>Telegram (သို့) TikTok မှ admin ကို ဆက်သွယ်ပြီး account ဖွင့်ပါ။</p>
     <button class="btn lg" id="openLogin2">🔓 Login ဝင်ရန်</button>
+    <div class="contact-chips">
+      <a class="chip" href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" rel="noopener">✈️ Telegram</a>
+      <a class="chip" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">🎵 TikTok</a>
+    </div>
   </div>
 
 </div>
@@ -451,9 +487,15 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
       </button>
     </form>
     <div class="alt-actions">
-      <a class="tg-contact" id="tgContact" href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" rel="noopener">
-        ✈️ Account မရှိဘူးလား? Admin ကို ဆက်သွယ်ပါ
-      </a>
+      <p class="alt-title">Account မရှိဘူးလား? Admin ကို ဆက်သွယ်ပါ</p>
+      <div class="contact-row">
+        <a class="tg-contact" href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" rel="noopener">
+          ✈️ Telegram
+        </a>
+        <a class="tt-contact" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">
+          🎵 TikTok
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -477,8 +519,9 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
      ═══════════════════════════════════════════════════════════ */
   var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwFDEK8zZ48WBpaMp8aMcHIhid07MWO0HyTypCOXaNQ_t-M8I3NvfhkDMgcuuz4VARNQ/exec';
 
-  /* ⚠️ သင့် Telegram username ကို ဖြည့်ပါ */
+  /* ⚠️ သင့် Contact URLs — ဖြည့်/ပြင်ပါ */
   var TELEGRAM_URL = 'https://t.me/YOUR_TELEGRAM_USERNAME';
+  var TIKTOK_URL   = 'https://www.tiktok.com/@myanmarged';
 
   /* THEME */
   var THEME_KEY = 'ged:theme';
@@ -493,9 +536,12 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 
-  /* TELEGRAM LINK */
+  /* SOCIAL LINK AUTO-REPLACE */
   var tgLinks = document.querySelectorAll('a[href*="YOUR_TELEGRAM_USERNAME"]');
   for(var tgi = 0; tgi < tgLinks.length; tgi++) tgLinks[tgi].href = TELEGRAM_URL;
+
+  var ttLinks = document.querySelectorAll('a[href*="tiktok.com/@myanmarged"]');
+  for(var tti = 0; tti < ttLinks.length; tti++) ttLinks[tti].href = TIKTOK_URL;
 
   /* DEVICE FINGERPRINT */
   function getDeviceId(){
@@ -628,17 +674,17 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
             showStatus('error',
               '⏰ <b>Account သက်တမ်း ကုန်ဆုံးပါပြီ</b>' +
               (res.expireDate ? ' (ကုန်ဆုံး: ' + res.expireDate + ')' : '') +
-              '<br><br>သက်တမ်းတိုးရန် Telegram admin ကို ဆက်သွယ်ပါ။');
+              '<br><br>သက်တမ်းတိုးရန် Telegram (သို့) TikTok admin ကို ဆက်သွယ်ပါ။');
             return;
           }
           if(res.code === 'DEVICE_MISMATCH'){
             showStatus('error',
               '📱 <b>အခြား Device တွင် အသုံးပြုနေသည်</b><br><br>' +
-              'Device အသစ်ဖြင့် ဝင်ရန် Telegram admin ကို ဆက်သွယ်ပါ။');
+              'Device အသစ်ဖြင့် ဝင်ရန် Telegram (သို့) TikTok admin ကို ဆက်သွယ်ပါ။');
             return;
           }
           if(res.code === 'INACTIVE'){
-            showStatus('warn', '🚫 <b>Account ပိတ်ထားသည်</b><br>Telegram admin ကို ဆက်သွယ်ပါ။');
+            showStatus('warn', '🚫 <b>Account ပိတ်ထားသည်</b><br>Telegram (သို့) TikTok admin ကို ဆက်သွယ်ပါ။');
             return;
           }
           if(res.code === 'BAD_ID'){
@@ -646,7 +692,7 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
             return;
           }
           if(res.code === 'NO_USER'){
-            showStatus('error', '❌ <b>Username မတွေ့ပါ</b><br>Telegram admin ကို ဆက်သွယ်ပါ။');
+            showStatus('error', '❌ <b>Username မတွေ့ပါ</b><br>Telegram (သို့) TikTok admin ကို ဆက်သွယ်ပါ။');
             return;
           }
           showStatus('error', '❌ ' + (res.error || 'Error ဖြစ်ပွားသည်'));
