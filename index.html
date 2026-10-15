@@ -122,6 +122,124 @@ html[data-theme="dark"] body::before{opacity:.55;}
 .section-head p{margin:0 auto;max-width:560px;font-size:14.5px;
   color:var(--muted);line-height:1.7;}
 
+/* ═══════════ FREE LEARNING ═══════════ */
+.free-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  margin-bottom:20px;
+}
+@media(min-width:640px){.free-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1000px){.free-grid{grid-template-columns:repeat(4,1fr);}}
+
+.free-card{
+  position:relative;display:flex;flex-direction:column;
+  padding:22px;border-radius:20px;
+  background:var(--card);border:1.5px solid var(--border);
+  box-shadow:var(--shadow);text-decoration:none;color:inherit;
+  transition:transform .28s,box-shadow .28s,border-color .28s;
+  overflow:hidden;isolation:isolate;
+  animation:fadeUpFree .5s ease both;
+}
+@keyframes fadeUpFree{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.free-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--fc),color-mix(in srgb,var(--fc) 60%,#000));
+}
+@media(hover:hover){
+  .free-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-lg);
+    border-color:var(--fc);
+  }
+  .free-card:hover .free-arrow{transform:translateX(4px);}
+}
+.free-card:active{transform:scale(.985);}
+
+.free-badge{
+  position:absolute;top:14px;right:14px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;padding:4px 10px;border-radius:999px;
+  font-size:10px;font-weight:800;letter-spacing:.04em;
+  box-shadow:0 4px 12px -4px rgba(22,163,74,.8);
+}
+
+.free-icon{
+  width:56px;height:56px;border-radius:16px;
+  display:grid;place-items:center;font-size:26px;
+  background:color-mix(in srgb,var(--fc) 15%,transparent);
+  margin-bottom:14px;
+}
+html[data-theme="dark"] .free-icon{
+  background:color-mix(in srgb,var(--fc) 25%,transparent);
+}
+
+.free-card h3{
+  margin:0 0 5px;font-size:15.5px;font-weight:800;
+  letter-spacing:-.01em;line-height:1.3;color:var(--text);
+}
+.free-card p{
+  margin:0 0 14px;font-size:12px;color:var(--muted);
+  font-weight:600;line-height:1.6;
+}
+.free-list{
+  list-style:none;padding:0;margin:0 0 16px;
+  display:flex;flex-direction:column;gap:6px;flex:1;
+}
+.free-list li{
+  font-size:12px;color:var(--text);font-weight:600;
+  line-height:1.5;padding-left:2px;
+}
+.free-cta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 14px;border-radius:12px;
+  background:color-mix(in srgb,var(--fc) 10%,transparent);
+  color:var(--fc);font-size:12.5px;font-weight:800;
+  letter-spacing:-.01em;
+  transition:background .2s;
+}
+html[data-theme="dark"] .free-cta{
+  background:color-mix(in srgb,var(--fc) 18%,transparent);
+}
+.free-arrow{
+  font-size:16px;font-weight:900;
+  transition:transform .28s;
+}
+
+.premium-banner{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 22px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.06));
+  border:1.5px solid rgba(99,102,241,.25);
+  box-shadow:var(--shadow);
+  margin-top:20px;flex-wrap:wrap;
+}
+html[data-theme="dark"] .premium-banner{
+  background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.12));
+  border-color:rgba(99,102,241,.4);
+}
+.premium-icon{
+  width:52px;height:52px;flex:none;border-radius:14px;
+  display:grid;place-items:center;font-size:24px;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;box-shadow:0 12px 24px -10px rgba(99,102,241,.7);
+}
+.premium-body{flex:1;min-width:200px;}
+.premium-body h4{
+  margin:0 0 4px;font-size:15px;font-weight:800;
+  letter-spacing:-.01em;
+}
+.premium-body p{
+  margin:0;font-size:12.5px;color:var(--muted);line-height:1.65;
+}
+.premium-btn{
+  padding:12px 22px;border-radius:12px;border:none;
+  background:linear-gradient(135deg,var(--primary),var(--violet));
+  color:#fff;font-family:inherit;font-size:13.5px;font-weight:800;
+  cursor:pointer;box-shadow:0 12px 26px -10px rgba(99,102,241,.8);
+  transition:transform .18s,filter .2s;white-space:nowrap;
+}
+.premium-btn:hover{filter:brightness(1.08);}
+.premium-btn:active{transform:scale(.97);}
+
 .feature-grid{display:grid;grid-template-columns:1fr;gap:18px;}
 @media(min-width:900px){.feature-grid{grid-template-columns:repeat(3,1fr);}}
 .feature{background:var(--card);border:1px solid var(--border);border-radius:22px;
@@ -342,13 +460,13 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
   <section class="hero">
     <span class="badge">
       <span class="dot"></span>
-     
+      <span>GED Learning Platform</span>
     </span>
-   <h1>ခက်ခဲတယ်ထင်နေတဲ့ <em> GED ကို တစ်ခါတည်း အောင်မြင်အောင် လေ့လာလိုက်ပါ</em></h1>
+    <h1>ခက်ခဲတယ်ထင်နေတဲ့ <em> GED ကို တစ်ခါတည်း အောင်မြင်အောင် လေ့လာလိုက်ပါ</em></h1>
     <p>ဘာသာရပ် ၄ ခုအတွက် Exercise ၇,၂၀၀+ နှင့် Official Format Pretest များဖြင့် GED စာမေးပွဲအတွက် အသင့်ဖြစ်စေပါ။</p>
     <div class="hero-cta">
       <button class="btn primary lg" id="openLogin">🔓 Login ဝင်ရန်</button>
-     <a class="btn tg lg" href="https://t.me/gedhubs" target="_blank" rel="noopener">
+      <a class="btn tg lg" href="https://t.me/gedhubs" target="_blank" rel="noopener">
         ✈️ Telegram မှ ဆက်သွယ်ရန်
       </a>
       <a class="btn tt lg" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">
@@ -360,6 +478,95 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
       <div class="stat-card"><b>7,200+</b><span>Exercises</span></div>
       <div class="stat-card"><b>12</b><span>Exams</span></div>
       <div class="stat-card"><b>250+</b><span>Formulas</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FREE GED LEARNING ═══════════ -->
+  <section class="section" id="freeLearning">
+    <div class="section-head">
+      <span class="tag" style="background:rgba(22,163,74,.12);color:#15803d;padding:6px 14px;border-radius:999px;display:inline-block;">🆓 100% FREE</span>
+      <h2>GED Free Learning — အခမဲ့ လေ့လာပါ</h2>
+      <p>Login မလိုဘဲ ဘာသာရပ် ၄ ခုလုံးကို ချက်ချင်း လေ့လာနိုင်ပါသည်။ Sample Lessons နှင့် Practice Questions များ အခမဲ့ ပါဝင်ပါသည်။</p>
+    </div>
+
+    <div class="free-grid">
+      <!-- Math -->
+      <a class="free-card" href="free-math.html" style="--fc:#8b5cf6;">
+        <div class="free-badge">🆓 FREE</div>
+        <div class="free-icon">📐</div>
+        <h3>Mathematical Reasoning</h3>
+        <p>Algebra · Geometry · Statistics</p>
+        <ul class="free-list">
+          <li>✓ Sample Lessons 5 ခု</li>
+          <li>✓ Practice Questions 50 ခု</li>
+          <li>✓ Formula Sheet Access</li>
+        </ul>
+        <div class="free-cta">
+          <span>🚀 အခမဲ့ စတင်လေ့လာ</span>
+          <span class="free-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- RLA -->
+      <a class="free-card" href="free-rla.html" style="--fc:#3b82f6;">
+        <div class="free-badge">🆓 FREE</div>
+        <div class="free-icon">📖</div>
+        <h3>Reasoning Through Language Arts</h3>
+        <p>Reading · Grammar · Writing</p>
+        <ul class="free-list">
+          <li>✓ Sample Lessons 5 ခု</li>
+          <li>✓ Practice Questions 50 ခု</li>
+          <li>✓ Reference Sheet Access</li>
+        </ul>
+        <div class="free-cta">
+          <span>🚀 အခမဲ့ စတင်လေ့လာ</span>
+          <span class="free-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Science -->
+      <a class="free-card" href="free-science.html" style="--fc:#10b981;">
+        <div class="free-badge">🆓 FREE</div>
+        <div class="free-icon">🔬</div>
+        <h3>Science</h3>
+        <p>Biology · Chemistry · Physics</p>
+        <ul class="free-list">
+          <li>✓ Sample Lessons 5 ခု</li>
+          <li>✓ Practice Questions 50 ခု</li>
+          <li>✓ Reference Sheet Access</li>
+        </ul>
+        <div class="free-cta">
+          <span>🚀 အခမဲ့ စတင်လေ့လာ</span>
+          <span class="free-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- Social Studies -->
+      <a class="free-card" href="free-social.html" style="--fc:#f59e0b;">
+        <div class="free-badge">🆓 FREE</div>
+        <div class="free-icon">🌍</div>
+        <h3>Social Studies</h3>
+        <p>Civics · History · Geography</p>
+        <ul class="free-list">
+          <li>✓ Sample Lessons 5 ခု</li>
+          <li>✓ Practice Questions 50 ခု</li>
+          <li>✓ Reference Sheet Access</li>
+        </ul>
+        <div class="free-cta">
+          <span>🚀 အခမဲ့ စတင်လေ့လာ</span>
+          <span class="free-arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Premium CTA -->
+    <div class="premium-banner">
+      <div class="premium-icon">🔐</div>
+      <div class="premium-body">
+        <h4>Full Access လိုချင်လား?</h4>
+        <p>Login ဝင်ပြီး Exercise ၇,၂၀၀+ နှင့် Official Format Pretest များကို အပြည့်အဝ အသုံးပြုပါ။</p>
+      </div>
+      <button class="premium-btn" id="openLoginFree">🔓 Login ဝင်ရန်</button>
     </div>
   </section>
 
@@ -445,7 +652,7 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     <p>Telegram (သို့) TikTok မှ admin ကို ဆက်သွယ်ပြီး account ဖွင့်ပါ။</p>
     <button class="btn lg" id="openLogin2">🔓 Login ဝင်ရန်</button>
     <div class="contact-chips">
-    <a class="chip" href="https://t.me/gedhubs" target="_blank" rel="noopener">✈️ Telegram</a>
+      <a class="chip" href="https://t.me/gedhubs" target="_blank" rel="noopener">✈️ Telegram</a>
       <a class="chip" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">🎵 TikTok</a>
     </div>
   </div>
@@ -458,6 +665,15 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     <span>GED Myanmar</span>
   </div>
   <div>Learn. Practice. Pass.</div>
+  <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:11.5px;line-height:1.8;">
+    <p style="margin:0 0 6px;color:var(--muted);">
+      📚 <strong style="color:var(--text);">myanmarged.com</strong> — Dedicated learning, key points &amp; practical pre-test platform for Myanmar students.
+    </p>
+    <p style="margin:0 0 5px;">
+      <strong>Disclaimer:</strong> This is an independent platform and is not official.
+    </p>
+    <p style="margin:0;">&copy; 2026 myanmarged.com. All rights reserved.</p>
+  </div>
 </footer>
 
 <div class="modal-bg" id="modal">
@@ -489,7 +705,7 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
     <div class="alt-actions">
       <p class="alt-title">Account မရှိဘူးလား? Admin ကို ဆက်သွယ်ပါ</p>
       <div class="contact-row">
-       <a class="tg-contact" href="https://t.me/gedhubs" target="_blank" rel="noopener">
+        <a class="tg-contact" href="https://t.me/gedhubs" target="_blank" rel="noopener">
           ✈️ Telegram
         </a>
         <a class="tt-contact" href="https://www.tiktok.com/@myanmarged" target="_blank" rel="noopener">
@@ -501,25 +717,17 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
 </div>
 
 <div class="toast" id="toast"></div>
-<footer style="text-align: center; margin-top: 50px; font-size: 12px; color: #7f8c8d; border-top: 1px solid #ddd; padding-top: 20px; font-family: sans-serif; line-height: 1.6;">
-    <p style="margin-bottom: 6px; color: #555;">
-        📚 <strong>myanmarged.com</strong> - Dedicated learning, key points & practical pre-test platform for Myanmar students.
-    </p>
-    <p style="margin-bottom: 5px;">
-        <strong>Disclaimer:</strong> This is an independent platform and is not official.
-    </p>
-    <p>&copy; 2026 myanmarged.com. All rights reserved.</p>
-</footer>
+
 <script>
 (function(){
   "use strict";
 
   /* ═══════════════════════════════════════════════════════════
-     ✅ သင့် SCRIPT_URL — ပြင်ရန် မလိုပါ
+     ✅ SCRIPT_URL — သင့် Apps Script URL
      ═══════════════════════════════════════════════════════════ */
   var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwFDEK8zZ48WBpaMp8aMcHIhid07MWO0HyTypCOXaNQ_t-M8I3NvfhkDMgcuuz4VARNQ/exec';
 
-  /* ⚠️ သင့် Contact URLs — ဖြည့်/ပြင်ပါ */
+  /* ⚠️ Contact URLs */
   var TELEGRAM_URL = 'https://t.me/gedhubs';
   var TIKTOK_URL   = 'https://www.tiktok.com/@myanmarged';
 
@@ -539,7 +747,6 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
   /* SOCIAL LINK AUTO-REPLACE */
   var tgLinks = document.querySelectorAll('a[href*="YOUR_TELEGRAM_USERNAME"]');
   for(var tgi = 0; tgi < tgLinks.length; tgi++) tgLinks[tgi].href = TELEGRAM_URL;
-
   var ttLinks = document.querySelectorAll('a[href*="tiktok.com/@myanmarged"]');
   for(var tti = 0; tti < ttLinks.length; tti++) ttLinks[tti].href = TIKTOK_URL;
 
@@ -619,6 +826,7 @@ footer .brand .mark{width:24px;height:24px;border-radius:7px;display:grid;place-
 
   document.getElementById('openLogin').addEventListener('click', openModal);
   document.getElementById('openLogin2').addEventListener('click', openModal);
+  document.getElementById('openLoginFree').addEventListener('click', openModal);
   document.getElementById('closeModal').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
   document.addEventListener('keydown', function(e){
