@@ -149,7 +149,7 @@ html[data-theme="dark"] body::before{ opacity:.55 }
 html[data-theme="dark"] .info-box .ico{ background:rgba(245,158,11,.25) }
 .info-box b{ color:var(--text); font-weight:800 }
 
-/* ============ GRID ============ */
+/* ============ WRAP & GRID ============ */
 .wrap{
   max-width:1140px; margin:0 auto;
   padding:0 18px calc(50px + var(--safe-bottom));
@@ -158,6 +158,30 @@ html[data-theme="dark"] .info-box .ico{ background:rgba(245,158,11,.25) }
   display:grid; grid-template-columns:1fr; gap:14px;
 }
 @media(min-width:600px){ .grid{ grid-template-columns:repeat(2,1fr); gap:16px } }
+
+/* ============ SECTION HEAD ============ */
+.section-head{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:0 0 14px; padding-top:6px;
+}
+.section-head .pill{
+  padding:4px 10px; border-radius:999px;
+  font-size:10.5px; font-weight:900; letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.section-head .pill.old{ background:rgba(99,102,241,.14); color:var(--primary-d) }
+html[data-theme="dark"] .section-head .pill.old{ background:rgba(99,102,241,.28); color:#a5b4fc }
+.section-head .pill.new{ background:rgba(236,72,153,.14); color:#be185d }
+html[data-theme="dark"] .section-head .pill.new{ background:rgba(236,72,153,.28); color:#f9a8d4 }
+.section-head h2{
+  margin:0; font-size:clamp(16px,4vw,19px); font-weight:800;
+  letter-spacing:-.02em;
+}
+.section-head .subtitle{
+  font-size:12px; color:var(--muted); font-weight:600;
+  margin-left:auto;
+}
+.section-head + .grid{ margin-bottom:34px }
 
 /* ============ SUBJECT CARD ============ */
 .subj{
@@ -199,12 +223,22 @@ html[data-theme="dark"] .info-box .ico{ background:rgba(245,158,11,.25) }
   font-size:28px; border-radius:16px;
   transition:transform .3s cubic-bezier(.22,.8,.28,1);
 }
+.s-top-right{
+  display:flex; align-items:center; gap:8px; flex:none;
+}
 .s-arrow{
   width:32px; height:32px; flex:none;
   display:grid; place-items:center;
   font-size:14px; border-radius:50%;
   border:1px solid var(--border); color:var(--muted);
   transition:transform .28s, background .28s, color .28s, border-color .28s;
+}
+.new-badge{
+  padding:3px 8px; border-radius:6px;
+  font-size:9px; font-weight:900; letter-spacing:.1em;
+  background:linear-gradient(135deg, #ec4899, #f43f5e);
+  color:#fff;
+  box-shadow:0 6px 14px -6px rgba(236,72,153,.7);
 }
 .subj h2{
   margin:16px 0 0; font-size:18px; font-weight:800;
@@ -234,7 +268,7 @@ html[data-theme="dark"] .info-box .ico{ background:rgba(245,158,11,.25) }
   box-shadow:0 0 0 3px rgba(99,102,241,.2);
 }
 
-/* Best score badge */
+/* Score badge */
 .scores{
   display:flex; align-items:center; gap:8px; flex-wrap:wrap;
   margin-top:12px;
@@ -329,6 +363,128 @@ footer .brand .mark{
 .toast.show{ opacity:1; transform:translateX(-50%) translateY(0) }
 .toast.ok{ background:linear-gradient(135deg, #16a34a, #15803d) }
 
+/* ============================================================
+   SET PICKER SHEET
+============================================================ */
+.sheet-backdrop{
+  position:fixed; inset:0; z-index:100;
+  background:rgba(15,23,42,.55);
+  backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+  opacity:0; pointer-events:none;
+  transition:opacity .28s;
+}
+.sheet-backdrop.show{ opacity:1; pointer-events:auto }
+
+.sheet{
+  position:fixed; left:50%; bottom:0; z-index:101;
+  width:100%; max-width:480px;
+  max-height:88svh; overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px 24px 0 0;
+  padding:10px 18px calc(20px + var(--safe-bottom));
+  box-shadow:0 -24px 60px -22px rgba(0,0,0,.55);
+  transform:translate(-50%, 110%);
+  transition:transform .38s cubic-bezier(.22,.8,.28,1), opacity .25s;
+  opacity:0;
+}
+.sheet.show{ transform:translate(-50%, 0); opacity:1 }
+
+@media(min-width:560px){
+  .sheet{
+    bottom:auto; top:50%;
+    border-radius:24px;
+    padding:18px 20px 20px;
+    transform:translate(-50%,-42%) scale(.96);
+    box-shadow:var(--shadow-lg);
+  }
+  .sheet.show{ transform:translate(-50%,-50%) scale(1) }
+}
+
+.sheet-handle{
+  width:42px; height:4px; border-radius:99px;
+  background:var(--muted); opacity:.3;
+  margin:0 auto 14px;
+}
+@media(min-width:560px){ .sheet-handle{ display:none } }
+
+.sheet-head{
+  display:flex; align-items:center; gap:12px;
+}
+.sheet-icon{
+  width:46px; height:46px; flex:none;
+  display:grid; place-items:center;
+  font-size:22px; border-radius:14px;
+}
+.sheet-head .txt{ flex:1; min-width:0 }
+.sheet-head h3{
+  margin:0; font-size:16px; font-weight:800; letter-spacing:-.01em;
+}
+.sheet-head p{
+  margin:2px 0 0; font-size:11.5px; font-weight:600; color:var(--muted);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+.sheet-meta{
+  margin-top:14px; padding:10px 12px;
+  border-radius:12px; border:1px solid var(--border);
+  background:var(--hover-soft);
+  font-size:12px; font-weight:600; color:var(--muted);
+  text-align:center;
+}
+.sheet-meta b{ color:var(--text); font-weight:800 }
+
+.set-grid{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:10px; margin:16px 0 12px;
+}
+
+.set-btn{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:5px; padding:14px 6px;
+  border-radius:14px;
+  border:1.5px solid var(--border);
+  background:var(--hover-soft);
+  color:var(--text); text-decoration:none;
+  transition:transform .18s, border-color .2s, background .2s;
+}
+.set-btn:hover{ border-color:var(--ac); background:transparent }
+.set-btn:active{ transform:scale(.95) }
+.set-n{ font-size:13.5px; font-weight:800; letter-spacing:-.01em }
+.set-new{
+  font-size:10px; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted);
+}
+.set-score{
+  font-size:11px; font-weight:800;
+  padding:2px 8px; border-radius:999px;
+}
+.set-score.good{ background:rgba(22,163,74,.15); color:#15803d }
+html[data-theme="dark"] .set-score.good{ background:rgba(22,163,74,.28); color:#4ade80 }
+.set-score.mid{ background:rgba(245,158,11,.18); color:#b45309 }
+html[data-theme="dark"] .set-score.mid{ background:rgba(245,158,11,.28); color:#fbbf24 }
+.set-score.bad{ background:rgba(220,38,38,.14); color:#b91c1c }
+html[data-theme="dark"] .set-score.bad{ background:rgba(220,38,38,.28); color:#fca5a5 }
+
+.random-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; padding:14px;
+  border-radius:14px; border:none; cursor:pointer;
+  font-family:inherit; font-size:14px; font-weight:800;
+  color:#fff; text-decoration:none;
+  background:var(--ac, var(--primary));
+  box-shadow:0 14px 28px -14px var(--ac, var(--primary));
+  transition:transform .18s, filter .2s;
+}
+.random-btn:hover{ filter:brightness(1.06) }
+.random-btn:active{ transform:scale(.97) }
+
+.sheet-note{
+  margin:12px 0 0; text-align:center;
+  font-size:11px; color:var(--muted); font-weight:600; line-height:1.7;
+}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms !important;
@@ -358,8 +514,9 @@ footer .brand .mark{
   <div class="icon">✍️</div>
   <h1>GED Pretest</h1>
   <p>
-    GED စာမေးပွဲအတွက် အသင့်ဖြစ်မဖြစ် စမ်းသပ်ပါ။ ဘာသာရပ်တစ်ခုချင်းစီအတွက်
-    Official Format (46 questions · 115 minutes) အတိုင်း ဖြေဆိုနိုင်ပါသည်။
+    ဘာသာရပ်တစ်ခုချင်းစီအတွက် Set (၆) စုံ ရှိပါသည်။
+    <b style="color:var(--text)">Old Sets (1–3)</b> နှင့်
+    <b style="color:var(--text)">New Sets (4–6)</b> ဟူ၍ နှစ်ပိုင်း ခွဲထားပါသည်။
   </p>
 </section>
 
@@ -369,16 +526,32 @@ footer .brand .mark{
     <span class="ico">💡</span>
     <div>
       <b>အကြံပြုချက်</b><br>
-      Pretest ဖြေပြီးပါက သင့်အားနည်းသော ဘာသာရပ်ကို သိရှိနိုင်ပါသည်။
-      ထိုဘာသာရပ်၏ Lesson များကို ဦးစားပေး လေ့လာပါ။ ရမှတ်ကို browser ထဲ သိမ်းထားပေးမည်ဖြစ်သောကြောင့်
-      နောက်တစ်ခါ ပြန်ကြည့်နိုင်ပါသည်။
+      Box တစ်ခုကို နှိပ်လိုက်ပါက ထို Group အတွင်းရှိ Set များထဲမှ ရွေးချယ်နိုင်ပါသည်။
+      Set တစ်ခုချင်းစီ၏ ရမှတ်ကို browser ထဲ သီးခြားသိမ်းထားပေးမည်ဖြစ်သောကြောင့်
+      မည်သည့် Set ဖြေပြီးပြီ၊ ဘယ်လောက်ရထားသည်ကို ပြန်ကြည့်နိုင်ပါသည်။
     </div>
   </div>
 </div>
 
-<!-- ============ SUBJECTS GRID ============ -->
+<!-- ============ SUBJECTS ============ -->
 <div class="wrap">
-  <div class="grid" id="subjectGrid"></div>
+
+  <!-- ===== OLD SECTION ===== -->
+  <div class="section-head">
+    <span class="pill old">Old</span>
+    <h2>Set 1 – 3</h2>
+    <span class="subtitle">အခြေခံ မေးခွန်းများ</span>
+  </div>
+  <div class="grid" id="gridOld"></div>
+
+  <!-- ===== NEW SECTION ===== -->
+  <div class="section-head">
+    <span class="pill new">New</span>
+    <h2>Set 4 – 6</h2>
+    <span class="subtitle">မေးခွန်းအသစ်များ</span>
+  </div>
+  <div class="grid" id="gridNew"></div>
+
 </div>
 
 <!-- ============ HOW IT WORKS ============ -->
@@ -391,8 +564,8 @@ footer .brand .mark{
   <div class="steps">
     <div class="step">
       <div class="n">1</div>
-      <h4>ဘာသာရပ် ရွေးပါ</h4>
-      <p>RLA · Math · Science · Social Studies အနက် ဖြေလိုသည့် ဘာသာရပ်ကို ရွေးပါ။</p>
+      <h4>Group + Set ရွေးပါ</h4>
+      <p>Old Sets (1–3) သို့မဟုတ် New Sets (4–6) ထဲမှ ရွေးပြီး Set တစ်ခုကို ရွေးပါ။</p>
     </div>
     <div class="step">
       <div class="n">2</div>
@@ -415,6 +588,30 @@ footer .brand .mark{
   </div>
   <div>Learn. Practice. Pass.</div>
 </footer>
+
+<!-- ============ SET PICKER SHEET ============ -->
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-handle"></div>
+
+  <div class="sheet-head">
+    <span class="sheet-icon" id="sheetIcon">📖</span>
+    <div class="txt">
+      <h3 id="sheetTitle">RLA</h3>
+      <p id="sheetSub">Reasoning Through Language Arts</p>
+    </div>
+    <button class="icon-btn" id="sheetClose" type="button" aria-label="Close">✕</button>
+  </div>
+
+  <div class="sheet-meta" id="sheetMeta"></div>
+
+  <div class="set-grid" id="setGrid"></div>
+
+  <a class="random-btn" id="randomBtn" href="#">🎲 Random Set ဖြင့် ဖြေမယ်</a>
+
+  <p class="sheet-note">Set တစ်ခုချင်းစီ၏ ရမှတ်ကို သီးခြားသိမ်းထားပါသည်။</p>
+</div>
 
 <!-- ============ TOAST ============ -->
 <div class="toast" id="toast"></div>
@@ -448,12 +645,21 @@ footer .brand .mark{
   });
 
   /* ============================================================
-     SUBJECT CONFIG — ALL READY
+     CONFIG
   ============================================================ */
+  var STORE = 'ged:pretest:scores';   // key: "rla:s4"
+
+  /* Group = Old (1–3) / New (4–6) */
+  var RANGES = [
+    { key:'old', from:1, to:3, label:'Set 1 – 3', pill:'Old', pillClass:'old' },
+    { key:'new', from:4, to:6, label:'Set 4 – 6', pill:'New', pillClass:'new' }
+  ];
+
   var SUBJECTS = [
     {
       id: 'rla',
       href: 'rlaexam.html',
+      hrefNew: 'rlaexam1.html',
       icon: '📖',
       color: '#3b82f6',
       name: 'RLA',
@@ -465,6 +671,7 @@ footer .brand .mark{
     {
       id: 'math',
       href: 'mathexam.html',
+      hrefNew: 'mathexam1.html',
       icon: '📐',
       color: '#8b5cf6',
       name: 'Mathematical Reasoning',
@@ -476,6 +683,7 @@ footer .brand .mark{
     {
       id: 'science',
       href: 'scienceexam.html',
+      hrefNew: 'scienceexam1.html',
       icon: '🔬',
       color: '#10b981',
       name: 'Science',
@@ -487,6 +695,7 @@ footer .brand .mark{
     {
       id: 'social',
       href: 'socialexam.html',
+      hrefNew: 'socialexam1.html',
       icon: '🌍',
       color: '#f59e0b',
       name: 'Social Studies',
@@ -498,16 +707,11 @@ footer .brand .mark{
   ];
 
   /* ============================================================
-     LOAD SCORES
+     SCORE STORAGE HELPERS
   ============================================================ */
-  var STORE = 'ged:pretest:scores';
-
   function loadScores(){
-    try {
-      return JSON.parse(localStorage.getItem(STORE)) || {};
-    } catch(e){
-      return {};
-    }
+    try { return JSON.parse(localStorage.getItem(STORE)) || {}; }
+    catch(e){ return {}; }
   }
 
   function scoreClass(pct){
@@ -516,75 +720,264 @@ footer .brand .mark{
     return 'bad';
   }
 
-  /* ============================================================
-     RENDER
-  ============================================================ */
-  var grid = document.getElementById('subjectGrid');
+  function setKey(subjectId, n){
+    return subjectId + ':s' + n;
+  }
 
-  function render(){
-    var scores = loadScores();
-    grid.innerHTML = '';
+  function getSetRec(scores, subjectId, n){
+    var r = scores[setKey(subjectId, n)];
+    if(r && typeof r.pct === 'number') return r;
+    return null;
+  }
 
-    SUBJECTS.forEach(function(s, i){
-      var rec = scores[s.id];
-
-      var el = document.createElement('a');
-      el.href = s.href;
-      el.className = 'subj';
-      el.style.setProperty('--ac', s.color);
-      el.style.animationDelay = (i * 70) + 'ms';
-
-      var iconBg = s.color + '1f';
-
-      // Meta row
-      var metaHtml =
-        '<div class="s-meta">' +
-          '<div class="s-meta-item">' +
-            '<span class="dot"></span>' +
-            '<b>' + s.questions + '</b> questions' +
-          '</div>' +
-          '<div class="s-meta-item">' +
-            '<span class="dot"></span>' +
-            '<b>' + s.minutes + '</b> min' +
-          '</div>' +
-        '</div>';
-
-      // Score section
-      var bottomHtml = '';
-      if(rec && rec.pct != null){
-        var pct = rec.pct;
-        var cls = scoreClass(pct);
-        bottomHtml =
-          '<div class="scores">' +
-            '<span class="attempt-badge ' + cls + '">✔ Best: ' + pct + '%</span>' +
-            '<small>' + rec.score + '/' + rec.total + ' correct</small>' +
-          '</div>';
-      } else {
-        bottomHtml =
-          '<div class="scores">' +
-            '<small>📝 Not attempted yet</small>' +
-          '</div>';
+  /* Range-specific summary: only looks inside this group's sets */
+  function getRangeSummary(scores, subjectId, range){
+    var attempted = 0, best = null;
+    for(var n = range.from; n <= range.to; n++){
+      var r = getSetRec(scores, subjectId, n);
+      if(r){
+        attempted++;
+        if(!best || r.pct > best.pct) best = r;
       }
+    }
+    /* Legacy "ged:pretest:scores" -> "rla" record — old group အတွက် သာ */
+    if(range.key === 'old' && !best){
+      var legacy = scores[subjectId];
+      if(legacy && typeof legacy.pct === 'number') best = legacy;
+    }
+    return {
+      attempted: attempted,
+      best: best,
+      total: range.to - range.from + 1
+    };
+  }
 
-      el.innerHTML =
-        '<div class="s-top">' +
-          '<span class="s-icon" style="background:' + iconBg + ';">' + s.icon + '</span>' +
+  /* ============================================================
+     RENDER SUBJECT CARD (one per subject per range)
+  ============================================================ */
+  var gridOld = document.getElementById('gridOld');
+  var gridNew = document.getElementById('gridNew');
+
+  function buildCard(s, range, globalIndex){
+    var scores = loadScores();
+    var sum = getRangeSummary(scores, s.id, range);
+
+    /* NEW → hrefNew | OLD → href */
+    var cardHref = (range.key === 'new' && s.hrefNew) ? s.hrefNew : s.href;
+
+    var el = document.createElement('a');
+    el.href = cardHref;
+    el.className = 'subj';
+    el.style.setProperty('--ac', s.color);
+    el.style.animationDelay = (globalIndex * 60) + 'ms';
+    el.setAttribute('data-subject', s.id);
+    el.setAttribute('data-range', range.key);
+
+    var iconBg = s.color + '1f';
+
+    var metaHtml =
+      '<div class="s-meta">' +
+        '<div class="s-meta-item">' +
+          '<span class="dot"></span>' +
+          '<b>' + s.questions + '</b> questions' +
+        '</div>' +
+        '<div class="s-meta-item">' +
+          '<span class="dot"></span>' +
+          '<b>' + s.minutes + '</b> min' +
+        '</div>' +
+        '<div class="s-meta-item">' +
+          '<span class="dot"></span>' +
+          '<b>' + sum.total + '</b> sets' +
+        '</div>' +
+      '</div>';
+
+    var bottomHtml;
+    if(sum.best){
+      var cls = scoreClass(sum.best.pct);
+      var detail = sum.attempted + '/' + sum.total + ' sets · ' +
+                   sum.best.score + '/' + sum.best.total + ' correct';
+      bottomHtml =
+        '<div class="scores">' +
+          '<span class="attempt-badge ' + cls + '">✔ Best: ' + sum.best.pct + '%</span>' +
+          '<small>' + detail + '</small>' +
+        '</div>';
+    } else {
+      bottomHtml =
+        '<div class="scores">' +
+          '<small>📝 Not attempted yet</small>' +
+        '</div>';
+    }
+
+    el.innerHTML =
+      '<div class="s-top">' +
+        '<span class="s-icon" style="background:' + iconBg + ';">' + s.icon + '</span>' +
+        '<div class="s-top-right">' +
+          (range.key === 'new' ? '<span class="new-badge">NEW</span>' : '') +
           '<span class="s-arrow">→</span>' +
         '</div>' +
-        '<h2>' + s.name + '<small>' + s.full + '</small></h2>' +
-        '<p class="s-desc">' + s.desc + '</p>' +
-        metaHtml +
-        bottomHtml;
+      '</div>' +
+      '<h2>' + s.name + '<small>' + s.full + '</small></h2>' +
+      '<p class="s-desc">' + s.desc + '</p>' +
+      metaHtml +
+      bottomHtml;
 
-      grid.appendChild(el);
+    /* Card ကို နှိပ်လိုက်ပါက Set Picker ဖွင့် */
+    el.addEventListener('click', function(ev){
+      if(ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button === 1) return;
+      ev.preventDefault();
+      openSheet(s, range);
+    });
+
+    return el;
+  }
+
+  function render(){
+    gridOld.innerHTML = '';
+    gridNew.innerHTML = '';
+
+    var i = 0;
+    RANGES.forEach(function(range){
+      var target = range.key === 'old' ? gridOld : gridNew;
+      SUBJECTS.forEach(function(s){
+        target.appendChild(buildCard(s, range, i++));
+      });
     });
   }
+
+  /* ============================================================
+     SET PICKER SHEET
+  ============================================================ */
+  var backdrop   = document.getElementById('sheetBackdrop');
+  var sheetEl    = document.getElementById('sheet');
+  var sheetIcon  = document.getElementById('sheetIcon');
+  var sheetTitle = document.getElementById('sheetTitle');
+  var sheetSub   = document.getElementById('sheetSub');
+  var sheetMeta  = document.getElementById('sheetMeta');
+  var setGrid    = document.getElementById('setGrid');
+  var randomBtn  = document.getElementById('randomBtn');
+  var sheetClose = document.getElementById('sheetClose');
+
+  var activeSubject = null;
+  var activeRange = null;
+  var lastFocused = null;
+
+  function openSheet(s, range){
+    activeSubject = s;
+    activeRange = range;
+    lastFocused = document.activeElement;
+
+    var scores = loadScores();
+
+    /* NEW → hrefNew | OLD → href */
+    var baseHref = (range.key === 'new' && s.hrefNew) ? s.hrefNew : s.href;
+
+    sheetEl.style.setProperty('--ac', s.color);
+    sheetIcon.textContent = s.icon;
+    sheetIcon.style.background = s.color + '1f';
+    sheetTitle.textContent = s.name + ' · ' + range.label;
+    sheetSub.textContent = s.full;
+
+    sheetMeta.innerHTML =
+      '<b>' + range.pill + '</b> · ' +
+      '<b>' + s.questions + '</b> questions/set · ' +
+      '<b>' + s.minutes + '</b> min · ' +
+      '<b>' + (range.to - range.from + 1) + '</b> sets';
+
+    /* --- Set buttons for this range only --- */
+    setGrid.innerHTML = '';
+    for(var n = range.from; n <= range.to; n++){
+      (function(num){
+        var rec = getSetRec(scores, s.id, num);
+
+        var a = document.createElement('a');
+        a.className = 'set-btn';
+        a.href = baseHref + '?set=' + num;
+        a.setAttribute('aria-label', s.name + ' Set ' + num +
+          (rec ? ' — ' + rec.pct + '%' : ' — not attempted'));
+
+        a.innerHTML =
+          '<span class="set-n">Set ' + num + '</span>' +
+          (rec
+            ? '<span class="set-score ' + scoreClass(rec.pct) + '">' + rec.pct + '%</span>'
+            : '<span class="set-new">New</span>');
+
+        setGrid.appendChild(a);
+      })(n);
+    }
+
+    /* --- Random from this range --- */
+    function pickRandom(){
+      var span = range.to - range.from + 1;
+      return range.from + Math.floor(Math.random() * span);
+    }
+    randomBtn.textContent = '🎲 Random Set (' + range.from + '–' + range.to + ') ဖြင့် ဖြေမယ်';
+    randomBtn.href = baseHref + '?set=' + pickRandom();
+    randomBtn.onclick = function(){
+      randomBtn.href = baseHref + '?set=' + pickRandom();
+    };
+
+    /* --- Show --- */
+    backdrop.classList.add('show');
+    sheetEl.classList.add('show');
+    document.documentElement.style.overflow = 'hidden';
+
+    setTimeout(function(){ sheetClose.focus(); }, 60);
+  }
+
+  function closeSheet(){
+    backdrop.classList.remove('show');
+    sheetEl.classList.remove('show');
+    document.documentElement.style.overflow = '';
+    activeSubject = null;
+    activeRange = null;
+    if(lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  sheetClose.addEventListener('click', closeSheet);
+  backdrop.addEventListener('click', closeSheet);
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && sheetEl.classList.contains('show')) closeSheet();
+  });
+
+  /* Swipe-down (mobile) */
+  (function enableSwipeClose(){
+    var startY = null, currentY = 0, dragging = false;
+
+    sheetEl.addEventListener('touchstart', function(e){
+      if(!sheetEl.classList.contains('show')) return;
+      if(sheetEl.scrollTop > 0) return;
+      startY = e.touches[0].clientY;
+      currentY = 0;
+      dragging = true;
+      sheetEl.style.transition = 'none';
+    }, { passive: true });
+
+    sheetEl.addEventListener('touchmove', function(e){
+      if(!dragging || startY === null) return;
+      currentY = e.touches[0].clientY - startY;
+      if(currentY > 0){
+        sheetEl.style.transform = 'translate(-50%, ' + currentY + 'px)';
+      }
+    }, { passive: true });
+
+    sheetEl.addEventListener('touchend', function(){
+      if(!dragging) return;
+      dragging = false;
+      sheetEl.style.transition = '';
+      sheetEl.style.transform = '';
+      if(currentY > 110) closeSheet();
+      startY = null;
+      currentY = 0;
+    });
+  })();
 
   /* ============================================================
      REFRESH ON RETURN
   ============================================================ */
   window.addEventListener('pageshow', function(e){
-    if(e.persisted) render();
+    render();
+    if(e.persisted && sheetEl.classList.contains('show')) closeSheet();
   });
 
   /* ============================================================
