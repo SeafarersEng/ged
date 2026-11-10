@@ -16,19 +16,65 @@
 html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4afc7;--line:rgba(255,255,255,.1);--purple:#9a8cff;--purple2:#a987ff;--blue:#67a8ff;--green:#55d5a5;--orange:#ffc078;--pink:#ff91b7;--nav:rgba(13,20,37,.9);--shadow:0 12px 35px rgba(0,0,0,.22);--shadow2:0 20px 55px rgba(0,0,0,.35)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans Myanmar",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit}button{font:inherit}.container{width:min(1120px,calc(100% - 40px));margin:auto}
 .nav{position:sticky;top:0;z-index:50;background:var(--nav);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav-inner{height:72px;display:flex;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;letter-spacing:-.5px}.brand-mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#6757e8,#a06af2);display:grid;place-items:center;color:#fff;font-size:13px;font-weight:900;box-shadow:0 8px 20px #7561e544}.brand-name{font-size:17px}.nav-links{display:flex;align-items:center;gap:25px;margin-left:auto}.nav-links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700}.nav-links a:hover{color:var(--purple)}.nav-actions{display:flex;align-items:center;gap:9px}.icon-btn{width:40px;height:40px;border:1px solid var(--line);background:var(--surface);border-radius:13px;cursor:pointer;color:var(--ink)}.login-small{border:0;background:var(--ink);color:var(--surface);border-radius:13px;padding:11px 18px;font-weight:800;cursor:pointer;font-size:13px}.menu-btn{display:none}
-.hero{padding:66px 0 52px;position:relative}.hero:before{content:"";position:absolute;width:500px;height:500px;right:-160px;top:-120px;border-radius:50%;background:radial-gradient(circle,#a99cff30,transparent 68%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:45px;position:relative}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eae7ff;color:#5d4dd2;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;margin-bottom:20px}html[data-theme=dark] .eyebrow{background:#302b56;color:#c3baff}.live-dot{width:8px;height:8px;border-radius:50%;background:#20bd83;box-shadow:0 0 0 4px #20bd8325}.hero h1{font-size:clamp(35px,5vw,59px);line-height:1.22;letter-spacing:-2px;margin:0 0 18px;font-weight:900}.hero h1 .gradient{background:linear-gradient(110deg,#6255e7,#a15eea 60%,#388bf5);background-clip:text;-webkit-background-clip:text;color:transparent}.hero-copy{font-size:15px;color:var(--muted);max-width:570px;line-height:1.95;margin:0 0 26px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border:0;border-radius:14px;padding:14px 20px;font-size:14px;font-weight:800;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:linear-gradient(120deg,#6558e8,#9262ed);color:white;box-shadow:0 12px 25px #725eea38}.btn-light{background:var(--surface);color:var(--ink);border:1px solid var(--line)}.hero-note{font-size:11px;color:var(--muted);margin-top:15px}.hero-art{position:relative;min-height:390px;display:grid;place-items:center}.art-blob{position:absolute;width:330px;height:330px;border-radius:44% 56% 58% 42%;background:linear-gradient(145deg,#e5e1ff,#d8ecff);transform:rotate(-9deg)}html[data-theme=dark] .art-blob{background:linear-gradient(145deg,#342d61,#203a5b)}.study-card{position:relative;width:min(360px,100%);padding:24px;border-radius:25px;background:var(--surface);box-shadow:var(--shadow2);border:1px solid var(--line);transform:rotate(2deg)}.study-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.study-top strong{font-size:14px}.study-pill{background:#e8fff5;color:#11966a;border-radius:30px;padding:5px 10px;font-size:10px;font-weight:900}.study-welcome{font-size:20px;font-weight:900;line-height:1.4}.study-welcome span{color:var(--purple)}.study-sub{font-size:11px;color:var(--muted);margin:5px 0 18px}.mini-progress{background:var(--bg);padding:13px;border-radius:15px;margin-bottom:12px}.mini-progress-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;margin-bottom:9px}.bar{height:7px;background:var(--line);border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;width:68%;background:linear-gradient(90deg,#6757e8,#a06af2);border-radius:20px}.subject-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.subject-mini div{padding:11px;border-radius:13px;background:var(--bg);font-size:11px;font-weight:800}.subject-mini span{font-size:18px;margin-right:5px}.float-chip{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 14px;box-shadow:var(--shadow);font-size:11px;font-weight:800}.chip-one{left:-3px;top:65px;transform:rotate(-5deg)}.chip-two{right:-4px;bottom:48px;transform:rotate(4deg)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:38px}.stat{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:16px;text-align:center}.stat b{display:block;font-size:25px;font-weight:900;letter-spacing:-1px;color:var(--purple)}.stat span{font-size:11px;color:var(--muted);font-weight:700}
+
+/* ===== NEW: Announcement strip ===== */
+.announce{padding:12px 0;background:linear-gradient(90deg,#fff3e2,#ffe4d1 55%,#ffd9e6);border-bottom:1px solid var(--line)}
+html[data-theme=dark] .announce{background:linear-gradient(90deg,#2a1e10,#33231a 55%,#301c2a)}
+.announce-inner{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;font-size:13px;font-weight:700;color:#7a4110}
+html[data-theme=dark] .announce-inner{color:#ffc078}
+.announce-badge{background:linear-gradient(135deg,#f39a36,#ed6b9a);color:#fff;font-size:10px;font-weight:900;padding:5px 11px;border-radius:30px;letter-spacing:.6px;box-shadow:0 4px 12px rgba(243,154,54,.35)}
+.announce-text b{color:#b45309;font-weight:900}
+html[data-theme=dark] .announce-text b{color:#ffb45e}
+
+.hero{padding:66px 0 52px;position:relative}.hero:before{content:"";position:absolute;width:500px;height:500px;right:-160px;top:-120px;border-radius:50%;background:radial-gradient(circle,#a99cff30,transparent 68%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:45px;position:relative}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eae7ff;color:#5d4dd2;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;margin-bottom:20px}html[data-theme=dark] .eyebrow{background:#302b56;color:#c3baff}.live-dot{width:8px;height:8px;border-radius:50%;background:#20bd83;box-shadow:0 0 0 4px #20bd8325}.hero h1{font-size:clamp(35px,5vw,59px);line-height:1.22;letter-spacing:-2px;margin:0 0 18px;font-weight:900}.hero h1 .gradient{background:linear-gradient(110deg,#6255e7,#a15eea 60%,#388bf5);background-clip:text;-webkit-background-clip:text;color:transparent}.hero-copy{font-size:15px;color:var(--muted);max-width:570px;line-height:1.95;margin:0 0 26px}
+
+/* ===== NEW: Highlight inline text ===== */
+.hero-copy .hl{color:#b45309;font-weight:900;background:linear-gradient(transparent 62%,#f39a3650 62%);padding:0 3px;border-radius:2px}
+html[data-theme=dark] .hero-copy .hl{color:#ffc078;background:linear-gradient(transparent 62%,#f39a3660 62%)}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border:0;border-radius:14px;padding:14px 20px;font-size:14px;font-weight:800;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:linear-gradient(120deg,#6558e8,#9262ed);color:white;box-shadow:0 12px 25px #725eea38}.btn-light{background:var(--surface);color:var(--ink);border:1px solid var(--line)}.hero-note{font-size:11px;color:var(--muted);margin-top:15px}.hero-art{position:relative;min-height:390px;display:grid;place-items:center}.art-blob{position:absolute;width:330px;height:330px;border-radius:44% 56% 58% 42%;background:linear-gradient(145deg,#e5e1ff,#d8ecff);transform:rotate(-9deg)}html[data-theme=dark] .art-blob{background:linear-gradient(145deg,#342d61,#203a5b)}.study-card{position:relative;width:min(360px,100%);padding:24px;border-radius:25px;background:var(--surface);box-shadow:var(--shadow2);border:1px solid var(--line);transform:rotate(2deg)}.study-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.study-top strong{font-size:14px}.study-pill{background:#e8fff5;color:#11966a;border-radius:30px;padding:5px 10px;font-size:10px;font-weight:900}.study-welcome{font-size:20px;font-weight:900;line-height:1.4}.study-welcome span{color:var(--purple)}.study-sub{font-size:11px;color:var(--muted);margin:5px 0 18px}.mini-progress{background:var(--bg);padding:13px;border-radius:15px;margin-bottom:12px}.mini-progress-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;margin-bottom:9px}.bar{height:7px;background:var(--line);border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;width:68%;background:linear-gradient(90deg,#6757e8,#a06af2);border-radius:20px}.subject-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.subject-mini div{padding:11px;border-radius:13px;background:var(--bg);font-size:11px;font-weight:800}.subject-mini span{font-size:18px;margin-right:5px}.float-chip{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 14px;box-shadow:var(--shadow);font-size:11px;font-weight:800}.chip-one{left:-3px;top:65px;transform:rotate(-5deg)}.chip-two{right:-4px;bottom:48px;transform:rotate(4deg)}
+
+/* ===== NEW: Pre-Test highlight chip in art ===== */
+.chip-pretest{position:absolute;left:50%;top:-8px;transform:translateX(-50%) rotate(-3deg);background:linear-gradient(135deg,#f39a36,#ed6b9a);color:#fff;border:none;box-shadow:0 10px 22px rgba(243,154,54,.4);font-size:11px;padding:9px 14px;border-radius:30px;font-weight:900;letter-spacing:.3px;z-index:2}
+.chip-pretest span{opacity:.85;font-weight:700}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:38px}.stat{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:16px;text-align:center;position:relative}.stat b{display:block;font-size:25px;font-weight:900;letter-spacing:-1px;color:var(--purple)}.stat span{font-size:11px;color:var(--muted);font-weight:700}
+
+/* ===== NEW: Hot stat highlight ===== */
+.stat.hot{background:linear-gradient(135deg,#fff6e8,#ffe9cf);border-color:#f39a3680;box-shadow:0 12px 30px rgba(243,154,54,.18);overflow:hidden}
+html[data-theme=dark] .stat.hot{background:linear-gradient(135deg,#3a2a15,#4a3520);border-color:#f39a3688}
+.stat.hot b{color:#e07c10}
+html[data-theme=dark] .stat.hot b{color:#ffc078}
+.stat.hot:before{content:"🔥";position:absolute;top:8px;right:10px;font-size:14px;opacity:.9}
+
 .section{padding:66px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 30px}.kicker{color:var(--purple);font-size:11px;letter-spacing:1.5px;font-weight:900;text-transform:uppercase}.section-head h2{font-size:clamp(25px,4vw,36px);line-height:1.3;letter-spacing:-1px;margin:9px 0 10px;font-weight:900}.section-head p{margin:0;color:var(--muted);font-size:13px;line-height:1.9}
+.section-head p .hl{color:#b45309;font-weight:900;background:linear-gradient(transparent 62%,#f39a3650 62%);padding:0 3px;border-radius:2px}
+html[data-theme=dark] .section-head p .hl{color:#ffc078;background:linear-gradient(transparent 62%,#f39a3660 62%)}
+
 .subject-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.subject{position:relative;overflow:hidden;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:21px;padding:20px;min-height:225px;box-shadow:var(--shadow);transition:.25s}.subject:hover{transform:translateY(-6px);box-shadow:var(--shadow2)}.subject:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-48px;top:-45px;background:var(--tint)}.subject-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:var(--tint);font-size:27px;margin-bottom:17px;position:relative;z-index:1}.subject h3{font-size:14px;line-height:1.5;margin:0 0 5px;font-weight:900}.subject p{font-size:11px;color:var(--muted);margin:0 0 16px}.subject-foot{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:900;color:var(--accent)}.free-label{font-size:9px;background:#e5fff3;color:#0c9c69;padding:4px 8px;border-radius:30px;font-weight:900}
-.learning-band{background:linear-gradient(120deg,#211d55,#4d43a8 58%,#7257d9);border-radius:28px;padding:34px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;overflow:hidden;position:relative}.learning-band:after{content:"✦";position:absolute;font-size:180px;right:130px;top:-70px;color:#ffffff0d}.learning-band h2{font-size:25px;margin:0 0 8px;font-weight:900}.learning-band p{font-size:12px;line-height:1.8;color:#e1ddff;margin:0;max-width:650px}.learning-band .btn{background:#fff;color:#5546c6;position:relative;z-index:1;white-space:nowrap}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:var(--surface);border:1px solid var(--line);border-radius:21px;padding:23px;box-shadow:var(--shadow)}.feature-icon{width:53px;height:53px;border-radius:16px;display:grid;place-items:center;font-size:25px;margin-bottom:15px}.feature h3{font-size:16px;margin:0 0 7px;font-weight:900}.feature p{font-size:12px;line-height:1.85;color:var(--muted);margin:0}.feature-tag{display:inline-block;margin-top:15px;font-size:10px;font-weight:900;color:var(--purple);background:#efedff;padding:6px 10px;border-radius:30px}html[data-theme=dark] .feature-tag{background:#302b56;color:#c2baff}
+.learning-band{background:linear-gradient(120deg,#211d55,#4d43a8 58%,#7257d9);border-radius:28px;padding:34px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;overflow:hidden;position:relative}.learning-band:after{content:"✦";position:absolute;font-size:180px;right:130px;top:-70px;color:#ffffff0d}.learning-band h2{font-size:25px;margin:0 0 8px;font-weight:900}.learning-band p{font-size:12px;line-height:1.8;color:#e1ddff;margin:0;max-width:650px}.learning-band p b{color:#ffd9a3;font-weight:900}.learning-band .btn{background:#fff;color:#5546c6;position:relative;z-index:1;white-space:nowrap}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:var(--surface);border:1px solid var(--line);border-radius:21px;padding:23px;box-shadow:var(--shadow);position:relative}.feature-icon{width:53px;height:53px;border-radius:16px;display:grid;place-items:center;font-size:25px;margin-bottom:15px}.feature h3{font-size:16px;margin:0 0 7px;font-weight:900}.feature p{font-size:12px;line-height:1.85;color:var(--muted);margin:0}.feature-tag{display:inline-block;margin-top:15px;font-size:10px;font-weight:900;color:var(--purple);background:#efedff;padding:6px 10px;border-radius:30px}html[data-theme=dark] .feature-tag{background:#302b56;color:#c2baff}
+
+/* ===== NEW: Hot feature card (Pre-Test) ===== */
+.feature.hot{background:linear-gradient(150deg,#fff9f2,#fff 60%);border:1.5px solid #f39a3666;box-shadow:0 14px 40px rgba(243,154,54,.16)}
+html[data-theme=dark] .feature.hot{background:linear-gradient(150deg,#2a2015,#1e1a12 60%);border-color:#f39a3677;box-shadow:0 14px 40px rgba(243,154,54,.18)}
+.feature.hot:before{content:"🔥 HOT";position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#f39a36,#ed6b9a);color:#fff;font-size:9px;font-weight:900;padding:4px 10px;border-radius:30px;letter-spacing:.5px;box-shadow:0 6px 14px rgba(243,154,54,.4)}
+.feature.hot .feature-tag{background:linear-gradient(135deg,#f39a36,#ed6b9a);color:#fff;font-size:10.5px;padding:6px 12px}
+.feature.hot h3{color:#b45309}
+html[data-theme=dark] .feature.hot h3{color:#ffc078}
+.feature.hot p b{color:#b45309;font-weight:900}
+html[data-theme=dark] .feature.hot p b{color:#ffc078}
+
+/* ===== NEW: Hot feature-tag for exercises ===== */
+.feature.exercise .feature-tag{background:linear-gradient(135deg,#6558e8,#9262ed);color:#fff;font-size:10.5px;padding:6px 12px}
+
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:var(--surface);border:1px solid var(--line);border-radius:19px;padding:22px;position:relative}.step-no{width:34px;height:34px;border-radius:11px;background:#eeebff;color:#6555df;display:grid;place-items:center;font-size:13px;font-weight:900;margin-bottom:14px}html[data-theme=dark] .step-no{background:#302b56;color:#c2baff}.step h3{font-size:14px;margin:0 0 6px;font-weight:900}.step p{font-size:11px;color:var(--muted);line-height:1.8;margin:0}
 .review-section{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.review-card{background:var(--bg);border:1px solid var(--line);border-radius:19px;padding:10px;overflow:hidden;cursor:pointer;transition:.22s}.review-card:hover{transform:translateY(-5px);box-shadow:var(--shadow2)}.review-image{width:100%;height:310px;object-fit:contain;display:block;border-radius:13px;background:var(--surface)}.review-caption{padding:12px 7px 7px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800}.review-caption span:last-child{font-size:10px;color:var(--purple)}
-.final-cta{background:linear-gradient(120deg,#6557e8,#9561e9);color:#fff;border-radius:27px;padding:40px 25px;text-align:center;box-shadow:0 18px 45px #705ce83b}.final-cta h2{font-size:clamp(24px,4vw,34px);margin:0 0 9px;font-weight:900}.final-cta p{font-size:13px;color:#efebff;margin:0 auto 20px;max-width:550px;line-height:1.9}.final-cta .btn{background:#fff;color:#5e4ed0}
+.final-cta{background:linear-gradient(120deg,#6557e8,#9561e9);color:#fff;border-radius:27px;padding:40px 25px;text-align:center;box-shadow:0 18px 45px #705ce83b}.final-cta h2{font-size:clamp(24px,4vw,34px);margin:0 0 9px;font-weight:900}.final-cta p{font-size:13px;color:#efebff;margin:0 auto 20px;max-width:550px;line-height:1.9}.final-cta p .hl{color:#ffd9a3;font-weight:900}.final-cta .btn{background:#fff;color:#5e4ed0}
 .footer{padding:35px 0 calc(35px + var(--safe));color:var(--muted);font-size:11px}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid var(--line);padding-top:23px}.footer-links{display:flex;gap:15px;flex-wrap:wrap}.footer-links a{text-decoration:none;color:var(--muted)}
 .modal-bg{display:none;position:fixed;inset:0;z-index:100;background:#10152acc;backdrop-filter:blur(7px);padding:18px;align-items:center;justify-content:center}.modal-bg.show{display:flex}.modal{width:min(440px,100%);max-height:92vh;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:25px;padding:27px;position:relative;box-shadow:0 30px 80px #0005;animation:pop .22s ease}.@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}.close{position:absolute;right:15px;top:15px;border:0;background:var(--bg);color:var(--muted);width:35px;height:35px;border-radius:11px;cursor:pointer}.modal-logo{width:52px;height:52px;margin:0 auto 12px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#6557e8,#9a65ed);color:white;font-weight:900}.modal h2{text-align:center;font-size:22px;margin:0 0 5px}.modal-sub{text-align:center;color:var(--muted);font-size:12px;margin:0 0 20px}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px;outline:none}.field input:focus{border-color:var(--purple)}.field .error{display:none;color:#e05252;font-size:11px;margin-top:4px}.field .error.show{display:block}.device-info{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px;font-size:10px;color:var(--muted);margin-bottom:15px;line-height:1.7}.submit{width:100%;border:0;border-radius:13px;padding:14px;background:linear-gradient(120deg,#6557e8,#9561e9);color:#fff;font-weight:900;cursor:pointer}.submit:disabled{opacity:.6;cursor:wait}.status{display:none;padding:11px;border-radius:11px;font-size:12px;margin-bottom:13px;line-height:1.7}.status.show{display:block}.status.success{background:#e2fff1;color:#087a52}.status.error{background:#ffe8e8;color:#a42d2d}.status.info{background:#e9efff;color:#3556a5}.modal-help{text-align:center;color:var(--muted);font-size:11px;margin:17px 0 9px}.modal-social{display:flex;gap:9px}.modal-social a{flex:1;text-align:center;text-decoration:none;padding:10px;border-radius:11px;background:var(--bg);font-size:12px;font-weight:800}.toast{position:fixed;z-index:150;bottom:25px;left:50%;transform:translate(-50%,100px);opacity:0;background:#18213a;color:white;padding:12px 18px;border-radius:12px;font-size:12px;transition:.3s}.toast.show{transform:translate(-50%,0);opacity:1}.lightbox{display:none;position:fixed;inset:0;z-index:120;background:#080b15ed;padding:25px;align-items:center;justify-content:center}.lightbox.show{display:flex}.lightbox img{max-width:min(900px,95vw);max-height:88vh;object-fit:contain;border-radius:12px}.lightbox button{position:absolute;top:20px;right:20px;border:0;background:#fff;color:#111;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
 @media(max-width:850px){.hero-grid{grid-template-columns:1fr  .8fr;gap:20px}.hero h1{font-size:42px}.subject-grid{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.review-image{height:260px}}
-@media(max-width:640px){.container{width:min(100% - 30px,520px)}.nav-inner{height:64px}.nav-links{display:none}.brand-name{font-size:15px}.brand-mark{width:38px;height:38px}.login-small{padding:10px 13px}.hero{padding:43px 0 35px}.hero-grid{grid-template-columns:1fr}.hero h1{font-size:36px;letter-spacing:-1.2px}.hero-copy{font-size:13px}.hero-art{min-height:330px;margin-top:5px}.art-blob{width:275px;height:275px}.study-card{width:min(320px,90%);padding:19px}.chip-one{left:0;top:35px}.chip-two{right:0;bottom:28px}.stats{grid-template-columns:repeat(2,1fr);gap:9px;margin-top:28px}.stat{padding:13px}.stat b{font-size:22px}.section{padding:48px 0}.section-head{margin-bottom:23px}.section-head p{font-size:12px}.subject-grid{gap:10px}.subject{padding:15px;min-height:205px;border-radius:17px}.subject-icon{width:47px;height:47px;font-size:23px;margin-bottom:13px}.subject h3{font-size:12px}.subject p{font-size:10px}.subject-foot{font-size:10px}.learning-band{grid-template-columns:1fr;padding:25px 21px;border-radius:22px}.learning-band h2{font-size:21px}.learning-band .btn{justify-self:start}.steps{grid-template-columns:1fr;gap:10px}.step{padding:17px;display:grid;grid-template-columns:42px 1fr;column-gap:12px}.step-no{grid-row:span 2;margin:0}.step h3{align-self:end}.step p{grid-column:2}.review-grid{grid-template-columns:1fr;gap:12px}.review-card{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:12px;padding:9px}.review-image{height:130px;object-fit:cover;object-position:top}.review-caption{display:block;padding:10px}.review-caption span{display:block}.review-caption span:last-child{margin-top:5px}.final-cta{padding:31px 19px}.footer-inner{display:block}.footer-links{margin-top:12px}.modal{padding:24px 19px}}
+@media(max-width:640px){.container{width:min(100% - 30px,520px)}.nav-inner{height:64px}.nav-links{display:none}.brand-name{font-size:15px}.brand-mark{width:38px;height:38px}.login-small{padding:10px 13px}.announce-inner{font-size:11.5px;gap:8px;text-align:center}.announce-text{font-size:11px}.hero{padding:43px 0 35px}.hero-grid{grid-template-columns:1fr}.hero h1{font-size:36px;letter-spacing:-1.2px}.hero-copy{font-size:13px}.hero-art{min-height:330px;margin-top:5px}.art-blob{width:275px;height:275px}.study-card{width:min(320px,90%);padding:19px}.chip-one{left:0;top:35px}.chip-two{right:0;bottom:28px}.chip-pretest{font-size:10px;padding:8px 12px}.stats{grid-template-columns:repeat(2,1fr);gap:9px;margin-top:28px}.stat{padding:13px}.stat b{font-size:22px}.section{padding:48px 0}.section-head{margin-bottom:23px}.section-head p{font-size:12px}.subject-grid{gap:10px}.subject{padding:15px;min-height:205px;border-radius:17px}.subject-icon{width:47px;height:47px;font-size:23px;margin-bottom:13px}.subject h3{font-size:12px}.subject p{font-size:10px}.subject-foot{font-size:10px}.learning-band{grid-template-columns:1fr;padding:25px 21px;border-radius:22px}.learning-band h2{font-size:21px}.learning-band .btn{justify-self:start}.steps{grid-template-columns:1fr;gap:10px}.step{padding:17px;display:grid;grid-template-columns:42px 1fr;column-gap:12px}.step-no{grid-row:span 2;margin:0}.step h3{align-self:end}.step p{grid-column:2}.review-grid{grid-template-columns:1fr;gap:12px}.review-card{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:12px;padding:9px}.review-image{height:130px;object-fit:cover;object-position:top}.review-caption{display:block;padding:10px}.review-caption span{display:block}.review-caption span:last-child{margin-top:5px}.final-cta{padding:31px 19px}.footer-inner{display:block}.footer-links{margin-top:12px}.modal{padding:24px 19px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -41,6 +87,14 @@ html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4af
  </div>
 </nav>
 
+<!-- NEW: Announcement strip highlighting 24 Pre-Tests + 7,200+ Exercises -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span class="announce-badge">🔥 NEW</span>
+    <span class="announce-text"><b>Pre-Test ၂၄ စုံ</b> နှင့် <b>Exercise ၇,၂၀၀+</b> ဖြင့် စာမေးပွဲအတွက် အသင့်ပြင်ဆင်လိုက်ပါ</span>
+  </div>
+</div>
+
 <main>
 <section class="hero">
  <div class="container">
@@ -48,12 +102,13 @@ html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4af
    <div>
     <div class="eyebrow"><span class="live-dot"></span> MYANMAR STUDENTS • GED LEARNING HUB</div>
     <h1>GED ကို <span class="gradient">ကိုယ့်အရှိန်နဲ့ကိုယ်</span> စတင်လေ့လာလိုက်ပါ။</h1>
-    <p class="hero-copy">စာမေးပွဲအတွက် စနစ်တကျပြင်ဆင်ဖို့ လိုအပ်တဲ့ သင်ခန်းစာတွေ၊ လေ့ကျင့်ခန်းတွေနဲ့ Pre-Test တွေကို တစ်နေရာတည်းမှာ လေ့လာနိုင်ပါပြီ။</p>
+    <p class="hero-copy">ဘာသာရပ် ၄ ခုအတွက် <span class="hl">Pre-Test ၂၄ စုံ</span> နှင့် <span class="hl">Exercise ၇,၂၀၀+</span> ပါဝင်ပြီး စာမေးပွဲအတွက် စနစ်တကျပြင်ဆင်ဖို့ လိုအပ်တဲ့ သင်ခန်းစာတွေ၊ လေ့ကျင့်ခန်းတွေကို တစ်နေရာတည်းမှာ လေ့လာနိုင်ပါပြီ။</p>
     <div class="hero-actions"><a class="btn btn-primary" href="#subjects">🎓 အခမဲ့ စတင်လေ့လာမယ် <span>→</span></a><button class="btn btn-light open-login">🔐 Student Login</button></div>
     <div class="hero-note">အခမဲ့ Sample Lessons များကို Login မဝင်ဘဲ စတင်လေ့လာနိုင်ပါတယ်။</div>
    </div>
    <div class="hero-art" aria-label="Learning dashboard illustration">
     <div class="art-blob"></div>
+    <div class="chip-pretest">🔥 Pre-Test ၂၄ စုံ <span>· 7,200+ Exercises</span></div>
     <div class="float-chip chip-one">✨ Learn at your own pace</div>
     <div class="study-card">
      <div class="study-top"><strong>My Learning Space</strong><span class="study-pill">LET'S GO!</span></div>
@@ -66,14 +121,17 @@ html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4af
    </div>
   </div>
   <div class="stats">
-   <div class="stat"><b>4</b><span>GED Subjects</span></div><div class="stat"><b>7,200+</b><span>Practice Exercises</span></div><div class="stat"><b>12</b><span>Pre-Test Exams</span></div><div class="stat"><b>250+</b><span>Study References</span></div>
+   <div class="stat"><b>4</b><span>GED Subjects</span></div>
+   <div class="stat"><b>7,200+</b><span>Practice Exercises</span></div>
+   <div class="stat hot"><b>24</b><span>Pre-Test Sets</span></div>
+   <div class="stat"><b>250+</b><span>Study References</span></div>
   </div>
  </div>
 </section>
 
 <section class="section" id="subjects">
  <div class="container">
-  <div class="section-head"><span class="kicker">START LEARNING</span><h2>ကိုယ်စိတ်ဝင်စားတဲ့ ဘာသာရပ်ကနေ စလိုက်ပါ</h2><p>ဘာသာရပ်တစ်ခုချင်းစီအတွက် အခြေခံသင်ခန်းစာနဲ့ Practice Questions တွေကို အခမဲ့ စမ်းသပ်လေ့လာနိုင်ပါတယ်။</p></div>
+  <div class="section-head"><span class="kicker">START LEARNING</span><h2>ကိုယ်စိတ်ဝင်စားတဲ့ ဘာသာရပ်ကနေ စလိုက်ပါ</h2><p>ဘာသာရပ်တစ်ခုချင်းစီအတွက် <span class="hl">Pre-Test ၆ စုံစီ</span> (စုစုပေါင်း ၂၄ စုံ) နှင့် Exercise များကို အခမဲ့ စမ်းသပ်လေ့လာနိုင်ပါတယ်။</p></div>
   <div class="subject-grid">
    <a class="subject" href="free-math.html" style="--tint:#eeeaff;--accent:#765de7"><div class="subject-icon">📐</div><h3>Mathematical Reasoning</h3><p>Algebra · Geometry · Statistics</p><div class="subject-foot"><span>🆓 FREE LEARNING</span><span>Explore →</span></div></a>
    <a class="subject" href="free-rla.html" style="--tint:#e8f2ff;--accent:#3989e8"><div class="subject-icon">📖</div><h3>Reasoning Through Language Arts</h3><p>Reading · Grammar · Writing</p><div class="subject-foot"><span>🆓 FREE LEARNING</span><span>Explore →</span></div></a>
@@ -84,15 +142,21 @@ html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4af
 </section>
 
 <section class="container">
- <div class="learning-band"><div><h2>ပိုပြီးလေ့ကျင့်ချင်သူတွေအတွက် Full Access</h2><p>ဘာသာရပ် ၄ ခုလုံးအတွက် Lesson-based Exercises 7,200+၊ Pre-Test များနဲ့ Study References တွေကို Student Account ဖြင့် အသုံးပြုနိုင်ပါတယ်။</p></div><button class="btn open-login">Student Login ဝင်ရန် →</button></div>
+ <div class="learning-band">
+  <div>
+   <h2>ပိုပြီးလေ့ကျင့်ချင်သူတွေအတွက် Full Access</h2>
+   <p>ဘာသာရပ် ၄ ခုလုံးအတွက် Lesson-based Exercises <b>7,200+</b>၊ <b>Pre-Test Sets ၂၄ စုံ</b> နှင့် Study References တွေကို Student Account ဖြင့် အသုံးပြုနိုင်ပါတယ်။</p>
+  </div>
+  <button class="btn open-login">Student Login ဝင်ရန် →</button>
+ </div>
 </section>
 
 <section class="section" id="features">
  <div class="container">
-  <div class="section-head"><span class="kicker">YOUR STUDY TOOLKIT</span><h2>လေ့လာမှုကို ပိုထိရောက်စေမယ့် Tools များ</h2><p>သင်ခန်းစာလေ့လာခြင်းကနေ စာမေးပွဲအတွက် ကိုယ့်အရည်အချင်းကို စမ်းသပ်ခြင်းအထိ။</p></div>
+  <div class="section-head"><span class="kicker">YOUR STUDY TOOLKIT</span><h2>လေ့လာမှုကို ပိုထိရောက်စေမယ့် Tools များ</h2><p>သင်ခန်းစာလေ့လာခြင်းကနေ စာမေးပွဲအတွက် ကိုယ့်အရည်အချင်းကို စမ်းသပ်ခြင်းအထိ — <span class="hl">Pre-Test ၂၄ စုံ</span> နှင့် <span class="hl">Exercise ၇,၂၀၀+</span> ပါဝင်သည်။</p></div>
   <div class="feature-grid">
-   <article class="feature"><div class="feature-icon" style="background:#eeeaff">📚</div><h3>Lesson-based Exercises</h3><p>Group → Lesson → Exercise အဆင့်ဆင့် လေ့ကျင့်နိုင်ပြီး အဖြေမှန်၊ ရှင်းလင်းချက်နဲ့ တိုးတက်မှုကို ပြန်လည်ကြည့်ရှုနိုင်ပါတယ်။</p><span class="feature-tag">7,200+ EXERCISES</span></article>
-   <article class="feature"><div class="feature-icon" style="background:#e5fbf2">✍️</div><h3>GED Pre-Test</h3><p>အချိန်ကန့်သတ်ချက်နဲ့ မေးခွန်းပုံစံများကို လေ့ကျင့်ပြီး ကိုယ့်ရဲ့ ပြင်ဆင်မှုအဆင့်ကို စမ်းသပ်နိုင်ပါတယ်။</p><span class="feature-tag">12 PRACTICE EXAMS</span></article>
+   <article class="feature exercise"><div class="feature-icon" style="background:#eeeaff">📚</div><h3>Lesson-based Exercises</h3><p>Group → Lesson → Exercise အဆင့်ဆင့် လေ့ကျင့်နိုင်ပြီး အဖြေမှန်၊ ရှင်းလင်းချက်နဲ့ တိုးတက်မှုကို ပြန်လည်ကြည့်ရှုနိုင်ပါတယ်။</p><span class="feature-tag">7,200+ EXERCISES</span></article>
+   <article class="feature hot"><div class="feature-icon" style="background:linear-gradient(135deg,#f39a36,#ed6b9a);color:#fff">✍️</div><h3>GED Pre-Test</h3><p>ဘာသာရပ် ၄ ခုအတွက် <b>Pre-Test ၂၄ စုံ</b> ဖြင့် အချိန်ကန့်သတ်ချက်နဲ့ မေးခွန်းပုံစံများကို လေ့ကျင့်ပြီး ကိုယ့်ရဲ့ ပြင်ဆင်မှုအဆင့်ကို စမ်းသပ်နိုင်ပါတယ်။</p><span class="feature-tag">🔥 24 PRE-TEST SETS</span></article>
    <article class="feature"><div class="feature-icon" style="background:#fff2e2">📐</div><h3>Study References</h3><p>လေ့လာနေစဉ် လိုအပ်တဲ့ Formula၊ Reference နဲ့ အရေးကြီးတဲ့ အချက်အလက်တွေကို ရှာဖွေအသုံးပြုနိုင်ပါတယ်။</p><span class="feature-tag">250+ REFERENCES</span></article>
   </div>
  </div>
@@ -104,7 +168,7 @@ html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4af
   <div class="steps">
    <article class="step"><div class="step-no">01</div><h3>Free Lesson ကို စမ်းကြည့်ပါ</h3><p>ဘာသာရပ်တစ်ခုကို ရွေးပြီး Sample Lesson နဲ့ Practice Questions တွေကို စတင်လေ့လာပါ။</p></article>
    <article class="step"><div class="step-no">02</div><h3>Student Account ရယူပါ</h3><p>Full Access အသုံးပြုလိုပါက Telegram မှတစ်ဆင့် Admin ကို ဆက်သွယ်ပြီး Account ရယူပါ။</p></article>
-   <article class="step"><div class="step-no">03</div><h3>လေ့ကျင့်ပြီး တိုးတက်ပါ</h3><p>Exercises တွေဖြေဆိုပါ၊ Reference တွေကို အသုံးပြုပါ၊ Pre-Test နဲ့ ကိုယ့်အဆင့်ကို စစ်ဆေးပါ။</p></article>
+   <article class="step"><div class="step-no">03</div><h3>လေ့ကျင့်ပြီး တိုးတက်ပါ</h3><p>Exercises တွေဖြေဆိုပါ၊ <b>Pre-Test ၂၄ စုံ</b> နဲ့ ကိုယ့်အဆင့်ကို စစ်ဆေးပါ၊ Reference တွေကို အသုံးပြုပါ။</p></article>
   </div>
  </div>
 </section>
@@ -121,7 +185,7 @@ html[data-theme=dark]{--bg:#0d1425;--surface:#151f34;--ink:#f2f5ff;--muted:#a4af
 </section>
 
 <section class="section">
- <div class="container"><div class="final-cta"><h2>သင့် GED ခရီးစဉ်ကို ဒီနေ့ပဲ စတင်လိုက်ပါ 🎓</h2><p>အခမဲ့သင်ခန်းစာတွေကို စမ်းလေ့လာပါ။ Full Learning Access အတွက် Student Account ဖြင့် ဝင်ရောက်အသုံးပြုနိုင်ပါတယ်။</p><a class="btn" href="#subjects">အခမဲ့ စတင်လေ့လာမယ် →</a></div></div>
+ <div class="container"><div class="final-cta"><h2>သင့် GED ခရီးစဉ်ကို ဒီနေ့ပဲ စတင်လိုက်ပါ 🎓</h2><p>အခမဲ့သင်ခန်းစာတွေကို စမ်းလေ့လာပါ။ <span class="hl">Pre-Test ၂၄ စုံ</span> နှင့် <span class="hl">Exercise ၇,၂၀၀+</span> ဖြင့် Full Learning Access အတွက် Student Account ဖြင့် ဝင်ရောက်အသုံးပြုနိုင်ပါတယ်။</p><a class="btn" href="#subjects">အခမဲ့ စတင်လေ့လာမယ် →</a></div></div>
 </section>
 </main>
 
@@ -178,7 +242,7 @@ renderDeviceInfo();
 function saveSession(u){try{localStorage.setItem('ged:session',JSON.stringify(u))}catch(e){}}
 function callAPI(payload){return fetch(SCRIPT_URL,{method:'POST',mode:'cors',redirect:'follow',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(function(r){return r.text()}).then(function(t){try{return JSON.parse(t)}catch(e){throw new Error('Invalid server response')}})}
 function toast(msg){var el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(el._timer);el._timer=setTimeout(function(){el.classList.remove('show')},2500)}
-try{var existing=JSON.parse(localStorage.getItem('ged:session'));if(existing&&existing.username){/* Existing session is preserved; user can continue through their normal login flow. */}}catch(e){}
+try{var existing=JSON.parse(localStorage.getItem('ged:session'));if(existing&&existing.username){}}catch(e){}
 
 form.addEventListener('submit',function(e){
  e.preventDefault();clearErrors();clearStatus();
@@ -199,7 +263,6 @@ form.addEventListener('submit',function(e){
  }).catch(function(err){submitBtn.disabled=false;submitBtn.textContent='🔓 Login ဝင်မယ်';showStatus('error','Network Error — အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။ '+err.message)});
 });
 
-/* Student review image lightbox */
 var lightbox=document.getElementById('lightbox'),lightboxImg=document.getElementById('lightboxImg');
 function closeLightbox(){lightbox.classList.remove('show')}
 document.querySelectorAll('.review-card').forEach(function(card){card.addEventListener('click',function(){var img=card.querySelector('img');if(!img||!img.getAttribute('src'))return;lightboxImg.src=img.src;lightbox.classList.add('show')})});
